@@ -1,5 +1,8 @@
 class Solution:
     def twoSum(self, nums, target):
+        if (not nums or not len(nums)):
+            return -1
+
         dict = {}
 
         for i, num in enumerate(nums):
@@ -7,4 +10,4 @@ class Solution:
                 return ([dict[target - num], i])
             dict[num] = i
 
-        return([])
+        return -1
