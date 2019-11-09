@@ -1,5 +1,5 @@
 class Solution:
-    def twoSum(self, nums, target):
+    def two_sum(self, nums, target):
         if (not nums or not len(nums)):
             return -1
 
@@ -12,7 +12,6 @@ class Solution:
 
         return -1
 
-
 # testing code
 s = Solution()
-print(s.twoSum([1, 2, 3], 4))
+print(s.two_sum([1, 2, 3], 4))

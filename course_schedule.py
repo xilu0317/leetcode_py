@@ -1,5 +1,5 @@
 class Solution(object):
-    def canFinish(self, numCourses, prerequisites):
+    def can_finish(self, numCourses, prerequisites):
         graph = [[] for _ in range(numCourses)]
         visited = [0 for _ in range(numCourses)]
         # create graph
@@ -9,15 +9,16 @@ class Solution(object):
 
         # visit each node
         for i in range(numCourses):
-            if not self.dfsCycleDetected(graph, visited, i):
+            if not self.dfs_cycle_detected(graph, visited, i):
                 return False
 
         return True
 
-    def dfsCycleDetected(self, graph, visited, i):
+    def dfs_cycle_detected(self, graph, visited, i):
         # if ith node is marked as being visited, then a cycle is found
         if visited[i] == -1:
             return False
+
         # if it is done visted, then do not visit again
         if visited[i] == 1:
             return True
@@ -26,7 +27,7 @@ class Solution(object):
         visited[i] = -1
         # visit all the neighbours
         for j in graph[i]:
-            if not self.dfsCycleDetected(graph, visited, j):
+            if not self.dfs_cycle_detected(graph, visited, j):
                 return False
 
         # after visit all the neighbours, mark it as done visited

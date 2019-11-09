@@ -4,7 +4,6 @@ class ListNode:
         self.val = x
         self.next = None
 
-
 class Solution:
     def addTwoNumbers(self, l1, l2):
         cur1 = l1
