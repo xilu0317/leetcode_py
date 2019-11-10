@@ -4,7 +4,6 @@ class Solution:
             return -1
 
         dict = {}
-
         for i, num in enumerate(nums):
             if target - num in dict:
                 return ([dict[target - num], i])

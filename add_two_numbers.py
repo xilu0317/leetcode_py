@@ -7,8 +7,7 @@ class ListNode:
 
 class Solution:
     def addTwoNumbers(self, l1, l2):
-        cur1 = l1
-        cur2 = l2
+        cur1 = l1, cur2 = l2
         cur = dummy = ListNode(0)
         sum = 0
 
