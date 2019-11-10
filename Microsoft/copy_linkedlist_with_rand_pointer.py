@@ -6,7 +6,7 @@ class Node:
 
 
 class Solution:
-    def copyRandomList(self, head):
+    def copy_random_list(self, head):
         dic = dict()
         m = n = head
 
