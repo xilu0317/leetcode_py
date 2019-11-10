@@ -1,0 +1,458 @@
+Amazon OA2 2019
+https://leetcode.com/discuss/interview-question/344650/Amazon-Online-Assessment-Questions
+
+AMCAT
+
+Reorder Data in Log Files ⭐⭐⭐ [Experienced]
+Optimal Utilization ⭐⭐⭐ [Experienced]
+Min Cost to Connect Ropes / Min Time to Merge Files ⭐⭐⭐[Experienced]
+Treasure Island / Min Distance to Remove the Obstacle (BFS) ⭐⭐⭐ [Experienced]
+Treasure Island II (Multi-source BFS)
+Find Pair With Given Sum ⭐⭐ [Experienced, Intern]
+Copy List with Random Pointer ⭐⭐ [New Grad]
+Merge Two Sorted Lists ⭐⭐ [New Grad]
+Subtree of Another Tree ⭐⭐ [New Grad]
+Search a 2D Matrix II ⭐⭐ [New Grad]
+Critical Connections ⭐⭐ [New Grad]
+Favorite Genres ⭐⭐ [New Grad]
+Two Sum - Unique Pairs ⭐⭐ [New Grad]
+Spiral Matrix ⭐ [New Grad]
+Count substrings with exactly K distinct chars ⭐ [Intern]
+Path With Maximum Score ⭐⭐ [Intern]
+Longest Palindromic Substring ⭐⭐ [Intern]
+Movies on Flight ⭐ [Experienced, Intern]
+Substrings of size K with K distinct chars ⭐⭐ [Intern]
+Most Common Word ⭐⭐ [Intern]
+Distance Between Nodes in BST
+K Closest Points to Origin
+Find Pair With Max Appeal Sum
+Min Cost to Connect All Nodes (a.k.a. Min Cost to Add New Roads)
+Min Cost to Repair Edges (MST)
+Prison Cells After N Days
+Partition Labels
+Subtree with Maximum Average
+
+=========================================================
+Others:
+Roll Dice
+Longest string without 3 consecutive characters
+Longest string made up of only vowels
+
+/**********************************************************************************************************
+ Building Remove Obstacle - Time: O(mn)
+ **********************************************************************************************************/
+public static int removeObstacle(int numRows, int numColumns, List<List<Integer>> lot) {
+    if (lot == null || lot.size() == 0) return 0;
+    // Get the map array for convinience
+    // initial a visited 2d array for later use
+    int[][] map = new int[numRows][numColumns];
+    int[][] visited = new int[numRows][numColumns];
+    for (int i = 0; i < numRows; i++) {
+        for (int j = 0; j < numColumns; j++) {
+            map[i][j] = lot.get(i).get(j);
+        }
+    }
+
+    // BFS
+    int res = 0;
+    int[][] dirs = new int[][]{{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    Queue<int[]> queue = new LinkedList<>();
+    queue.offer(new int[]{0, 0});
+    while (!queue.isEmpty()) {
+        int size = queue.size(); // push
+        // interate the map layer by layer
+        for (int i = 0; i < size; i++) {
+            int[] cor = queue.poll(); // shift
+            int x = cor[0];
+            int y = cor[1];
+            visited[x][y] = 1;
+            if (map[x][y] == 9) return res;
+            for (int[] dir : dirs) {
+                int nx = x + dir[0];
+                int ny = y + dir[1];
+                // Get 4 directions, if out of bound or obstacle or visited, then not add to queue.
+                if (nx < 0 || nx > numRows - 1 || ny < 0 || ny > numColumns - 1 || map[nx][ny] == 0 || visited[nx][ny] == 1)
+                    continue;
+                queue.offer(new int[]{nx, ny});
+            }
+        }
+        res++;
+    }
+    return -1;
+}
+
+======
+
+/**
+ * FLAAG OA Remove Obstacle
+ * @param numRows
+ * @param numColumns
+ * @param lot
+ * @return
+ */
+const removeObstacle = (numRows, numColumns, lot) => {
+    let step = 0;
+    let twoS;
+    lot[0][0] = 2;
+    while (1) {
+        twoS = [];
+        let oriLot = JSON.parse(JSON.stringify(lot)).join(',');
+        step++;
+        for (i = 0; i < lot[0].length; i++)
+            for (j = 0; j < lot.length; j++)
+                if (lot[j][i] === 2) twoS.push([j, i]);
+        for (point of twoS) {
+            if (point[0] - 1 > -1)
+                if (lot[point[0] - 1][point[1]] == 9) return step;
+            if (point[0] + 1 < lot[0].length)
+                if (lot[point[0] + 1][point[1]] == 9) return step;
+            if (point[1] - 1 > -1)
+                if (lot[point[0]][point[1] - 1] == 9) return step;
+            if (point[1] + 1 < lot.length)
+                if (lot[point[0]][point[1] + 1] == 9) return step;
+            if (point[0] - 1 > -1 && lot[point[0] - 1][point[1]] == 1) lot[point[0] - 1][point[1]] = 2;
+            if (point[0] + 1 < lot[0].length && lot[point[0] + 1][point[1]] == 1) lot[point[0] + 1][point[1]] = 2;
+            if (point[1] - 1 > -1 && lot[point[0]][point[1] - 1] == 1) lot[point[0]][point[1] - 1] = 2;
+            if (point[1] + 1 < lot.length && lot[point[0]][point[1] + 1] == 1) lot[point[0]][point[1] + 1] = 2;
+        }
+        if (oriLot == JSON.parse(JSON.stringify(lot)).join(',')) return -1;
+    }
+};
+
+
+
+======
+1.零件组装 (MST) Write an algorithm to output the minimum possible time to put the N parts together and build the final product.
+注意的一点， 如果input只有一个零件，要返回0.
+2. 前后台进程: 输入：List<List<Integer>>一堆前台进程，List<List<Integer>>一堆后台进程，int memoryCapacit 0],[3,1000]], [[1,9000],[2,1000],[3,1000]], 10000,  输出: [[1,1],[3,1]]
+3. 两个list 分别是 前/后台程序 <id, mem size>，问在total mem limit下最大组合（必须是一前一后）
+
+************************************************************************************************************
+** 								   
+** 								   
+** 												SOLUTIONS	   
+** 								   
+** 								   
+************************************************************************************************************
+
+=====
+Two sum closest
+=====
+
+const twoSumClosest = (nums, target) => {
+    nums.sort((a,b) => a > b);
+    let min = Number.MAX_SAFE_INTEGER;
+
+    // define left indices at two ends
+    let left = 0;
+    let right = nums.length - 1;
+
+    while (left < right) {
+        if (nums[left] + nums[right] < target) {
+            min = Math.min(min, target - nums[left] - nums[right]);
+            left++;
+        }
+        else {
+            min = Math.min(min, nums[left] + nums[right] - target);
+            right--;
+        }
+    }
+
+    return min;
+};
+
+=====
+Two sum
+=====
+https://leetcode.com/problems/two-sum/
+
+const twoSum = (nums, target) => {
+    let dict = {};
+    for (let i = 0; i < nums.length; i++) {
+        dict[nums[i]] = i;
+    }
+
+    for (let i = 0; i < nums.length; i++) {
+        let goal = target - nums[i];
+        if (dict[goal] && i !== dict[goal] ) {
+            return [i, dict[goal]];
+        }
+    }
+
+    return -1;
+};
+
+=====
+Reorder Log Files
+=====
+https://leetcode.com/problems/reorder-log-files/
+
+// The key of this problem is the comparator
+const comparator = (a, b) => {
+    let aRest = a.substring(a.indexOf(' ') + 1);
+    let bRest = b.substring(b.indexOf(' ') + 1);
+
+    if (aRest > bRest) {
+        return 1;
+    } else if (aRest < bRest) {
+        return -1;
+    }
+
+	// when aRest and bRest are equal only then sort the keys
+    let aBefore = a.substring(0, a.indexOf('_') + 1);
+    let bBefore = b.substring(0, b.indexOf('_') + 1);
+
+    if (aBefore > bBefore) {
+        return -1;
+    } else {
+        return 1;
+    }
+};
+
+// key idea: split the array into two and then do a custom sort
+const reorderLogFiles = (logs) => {
+    let letterList = [];
+    let digitList = [];
+
+    for (let log of logs) {
+        // this is smart: looking at the last char to determine if the file is a digit file or string file
+        let isDigit = !isNaN(log[log.length - 1]);
+        if (isDigit) {
+            digitList.push(log);
+        } else {
+            letterList.push(log);
+        }
+    }
+
+    letterList.sort(comparator);
+
+    return [...letterList, ...digitList];
+};
+
+=====
+Robot Simulation
+=====
+https://leetcode.com/problems/walking-robot-simulation/
+
+const robotSim = (commands, obstacles) => {
+    const dirs = [[0, 1], [1, 0], [0, -1], [-1, 0]];
+    const set = new Set(obstacles.map(v => v[0] + ':' + v[1]));
+
+    let max = 0;
+    let dir = 0;
+    let x = 0;
+    let y = 0;
+
+    for (let c of commands) {
+        if (c === -1) {
+            dir = (dir + 1) % 4;
+        } else if (c === -2) {
+            dir = (dir + 3) % 4;
+        } else {
+            const [dx, dy] = dirs[dir];
+            for (let i = 0; i < c; i++) {
+                x += dx;
+                y += dy;
+                if (set.has(x + ':' + y)) {
+                    x -= dx;
+                    y -= dy;
+                    break;
+                }
+            }
+            max = Math.max(max, x * x + y * y);
+        }
+    }
+
+    return max;
+};
+
+=====
+Prison Cells After N Days
+=====
+https://leetcode.com/problems/prison-cells-after-n-days/
+
+const prisonAfterNDays = (cells, N) => {
+    let copy = cells.slice();
+    let maxIter = 2 * cells.length - 2;
+
+    N = N % maxIter === 0 ? maxIter : N % maxIter;
+
+    while (N-- > 0) {
+        for (let i = 0; i < cells.length; i++) {
+            copy[i] = (cells[i-1] === cells[i+1]) ? 1 : 0;
+        }
+        cells = copy.slice();
+    }
+
+    return cells;
+};
+
+=====
+Most common word
+=====
+https://leetcode.com/problems/most-common-word/
+
+const mostCommonWord = (paragraph, banned) => {
+    let words = [];
+    for (let word of paragraph.split(/\W+/)) {
+        words.push(word.toLowerCase());
+    }
+
+    let dict = {};
+    for (let word of words) {
+        if (!dict[word]) {
+            dict[word] = 1;
+        } else {
+            dict[word]++;
+        }
+    }
+
+    let set = new Set(banned);
+    let max = -1;
+    let myKey = null;
+    for (let key in dict) {
+        if (!set.has(key)) {
+            if (dict[key] > max) {
+                max = dict[key];
+                myKey = key;
+            }
+        }
+    }
+
+    return myKey;
+};
+
+=====
+Partition labels
+=====
+https://leetcode.com/problems/partition-labels/
+
+const partitionLabels = (S) => {
+	if(!S || S.length === 0) return null;
+
+	// record the last index of the each char
+	let dict = {};
+	let k = 0;
+	for (let c of S) {
+		dict[c] = k++;
+	}
+
+	// record the end index of the current sub string
+	let list = [];
+	let start = last = 0;
+	for (let i = 0; i < S.length; i++) {
+		last = Math.max(last, dict[S[i]]);
+		if(last === i){
+			list.push(last - start + 1);
+			start = last + 1;
+		}
+	}
+
+	return list;
+};
+
+=====
+K closest points to origin
+=====
+https://leetcode.com/problems/k-closest-points-to-origin/
+
+// Don't need this for the latest nodejs runtime
+const flat = (arr) => {
+	return arr.reduce((a,b) => a.concat(b));
+};
+
+const kClosest = (points, K) => {
+	let dictArr = [];
+	for (let point of points) {
+		let distanceSquare = point[0] * point[0] + point[1] * point[1];
+		dictArr.push([distanceSquare, point]);
+	}
+
+	dictArr.sort((a, b) => a[0] > b[0] ? 1 : -1);
+	// truncate the first K elements
+	dictArr.length = K;
+
+	return flat(dictArr).filter((v, k) => k % 2 !== 0);
+};
+
+=====
+Substrings of size K with K distinct chars
+=====
+
+const getKDist = (str, k) => {
+	if (k > str.length) return null;
+
+	if (k === str.length) return str;
+
+	let s = new Set();
+	for (let i = 0; i < str.length - k; i++) {
+		s.add(str.substring(i, i + k));
+	}
+
+	let words = [...s];
+	let res = [];
+	for (let word of words) {
+		if (new Set(word).size === word.length) {
+			res.push(word);
+		}
+	}
+
+	return res;
+};
+
+=====
+Subtree with Maximum Average
+=====
+
+public class Solution {
+    private class ResultType {
+        public int sum, size;
+        public ResultType(int sum, int size) {
+            this.sum = sum;
+            this.size = size;
+        }
+    }
+    
+    private TreeNode subtree = null;
+    private ResultType subtreeResult = null;
+    
+    /**
+     * @param root the root of binary tree
+     * @return the root of the maximum average of subtree
+     */
+    public TreeNode findSubtree(TreeNode root) {
+        helper(root);
+        return subtree;
+    }
+    
+    private ResultType helper(TreeNode root) {
+        if (root == null) {
+            return new ResultType(0, 0);
+        }
+        // Divide and conquer
+        ResultType left = helper(root.left);
+        ResultType right = helper(root.right);
+        // construct the result using left subtree, current node and right subtree.
+        ResultType result = new ResultType(
+            left.sum + right.sum + root.val,
+            left.size + right.size + 1
+        );
+        // Compare every substree's median with subtreeResult
+        if (subtree == null ||
+            (subtreeResult.sum / subtreeResult.size) < (result.sum / result.size)
+        ) {
+            subtree = root;
+            subtreeResult = result;
+        }
+        // Return current result, rather than subtreeResult, because subtreeResult is global
+        // subtreeResult is returned in the main function findSubtree
+        return result;
+    }
+}
+
+=====
+Longest string made up of only vowels
+=====
+
+
+
