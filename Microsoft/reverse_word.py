@@ -1,5 +1,5 @@
 class Solution:
-    def reverseWords(self, s):
+    def reverse_words(self, s):
         if not s:
             return s
 

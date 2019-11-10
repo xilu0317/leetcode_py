@@ -1,5 +1,5 @@
 class Solution:
-    def numIslands(self, grid):
+    def num_islands(self, grid):
         if not grid:
             return 0
 
