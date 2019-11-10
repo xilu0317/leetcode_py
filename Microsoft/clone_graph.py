@@ -1,17 +1,15 @@
-
 class Node:
     def __init__(self, val, neighbors):
         self.val = val
         self.neighbors = neighbors
 
-# TODO: error in code
-
 
 class Solution:
-    def cloneGraph(self, node):
+    def clone_graph(self, node):
         if not node:
             return None
 
+# first pass: create nodes
         dic = {}
         q = [node]
         while(len(q)):
@@ -23,16 +21,18 @@ class Solution:
                 if nb not in dic:
                     q.append(nb)
 
+# second pass: associate nodes
         q = [node]
         s = set()
         while (len(q)):
             n = q.pop(0)
             m = dic[n]
-            s.add(n)
+            if (n not in s):
+                s.add(n)
 
-            for nb in n.neighbors:
-                if nb not in s:
-                    q.append(nb)
-                m.neighbors.append(dic[nb])
+                for nb in n.neighbors:
+                    if nb not in s:
+                        q.append(nb)
+                    m.neighbors.append(dic[nb])
 
         return dic[node]
