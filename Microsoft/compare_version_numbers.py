@@ -6,7 +6,6 @@ class Solution:
         l2 = list(map(lambda x: int(x), l2))
 
         l1_len, l2_len = len(l1), len(l2)
-
         min_len, max_len = min(l1_len, l2_len), max(l1_len, l2_len)
 
         i = 0
