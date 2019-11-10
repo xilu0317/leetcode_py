@@ -10,10 +10,12 @@ class Solution:
         dic = dict()
         m = n = head
 
+        # first traveral create a mapping
         while m:
             dic[m] = Node(m.val, None, None)
             m = m.next
 
+        # second traversal sets up the relationship between nodes
         while n:
             dic[n].next = dic.get(n.next)
             dic[n].random = dic.get(n.random)

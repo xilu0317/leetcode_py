@@ -9,7 +9,7 @@ class Solution:
         if not node:
             return None
 
-# first pass: create nodes
+# first traversal: create nodal mapping
         dic = {}
         q = [node]
         while(len(q)):
@@ -21,7 +21,7 @@ class Solution:
                 if nb not in dic:
                     q.append(nb)
 
-# second pass: associate nodes
+# second traversal: associate nodes
         q = [node]
         s = set()
         while (len(q)):
