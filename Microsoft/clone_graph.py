@@ -9,30 +9,30 @@ class Solution:
         if not node:
             return None
 
-        # first traversal: create nodal mapping
         dic = {}
+
+        # 1st BFS: create node-to-node mapping
         q = [node]
         while(len(q)):
             n = q.pop(0)
-            m = Node(n.val, [])
-            dic[n] = m
+            dic[n] = Node(n.val, [])
 
             for nb in n.neighbors:
                 if nb not in dic:
                     q.append(nb)
 
-        # second traversal: associate nodes
+        # 2nd BFS: associate nodes
         q = [node]
         s = set()
         while (len(q)):
             n = q.pop(0)
-            m = dic[n]
+
             if (n not in s):
                 s.add(n)
 
                 for nb in n.neighbors:
                     if nb not in s:
                         q.append(nb)
-                    m.neighbors.append(dic[nb])
+                    dic[n].neighbors.append(dic[nb])
 
         return dic[node]
