@@ -1,5 +1,5 @@
 class Solution:
-    def numIslands(self, grid):
+    def num_islands(self, grid):
         count = 0
 
         for i in range(len(grid)):
