@@ -5,9 +5,9 @@ class Solution:
 
         m, n = len(dungeon), len(dungeon[0])
 
-        INF = float('inf')
+        MAX = float('inf')
 
-        dp = [[INF] * (n + 1) for i in range(m + 1)]
+        dp = [[MAX] * (n + 1) for i in range(m + 1)]
 
         dp[m][n - 1], dp[m - 1][n] = 1, 1
 
