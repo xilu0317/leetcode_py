@@ -1,14 +1,5 @@
-class Node:
-    def __init__(self, val, neighbors):
-        self.val = val
-        self.neighbors = neighbors
-
-
 class Solution:
     def clone_graph(self, node):
-        if not node:
-            return None
-
         dic = {}
 
         # 1st BFS: create node-to-node mapping
@@ -36,3 +27,9 @@ class Solution:
                     dic[n].neighbors.append(dic[nb])
 
         return dic[node]
+
+
+class Node:
+    def __init__(self, val, neighbors):
+        self.val = val
+        self.neighbors = neighbors

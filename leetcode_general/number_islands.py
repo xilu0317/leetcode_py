@@ -1,9 +1,7 @@
 class Solution:
-    def num_islands(self, grid):
-        if not grid:
-            return 0
-
+    def numIslands(self, grid):
         count = 0
+
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if grid[i][j] == '1':

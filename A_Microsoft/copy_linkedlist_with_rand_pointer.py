@@ -1,10 +1,3 @@
-class Node:
-    def __init__(self, val, next, random):
-        self.val = val
-        self.next = next
-        self.random = random
-
-
 class Solution:
     def copy_random_list(self, head):
         dic = dict()
@@ -22,3 +15,10 @@ class Solution:
             n = n.next
 
         return dic.get(head)
+
+
+class Node:
+    def __init__(self, val, next, random):
+        self.val = val
+        self.next = next
+        self.random = random

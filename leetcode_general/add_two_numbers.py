@@ -1,10 +1,3 @@
-# Definition for singly-linked list.
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
 class Solution:
     def add_two_numbers(self, l1, l2):
         cur1 = l1, cur2 = l2
@@ -29,3 +22,9 @@ class Solution:
             cur.next = ListNode(1)
 
         return dummy.next
+
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None

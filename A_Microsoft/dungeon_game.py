@@ -1,11 +1,8 @@
 class Solution:
     def calculate_minimum_HP(self, dungeon):
-        if not dungeon:
-            return -1
+        MAX = float('inf')
 
         m, n = len(dungeon), len(dungeon[0])
-
-        MAX = float('inf')
 
         dp = [[MAX] * (n + 1) for i in range(m + 1)]
 

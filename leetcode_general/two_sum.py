@@ -1,9 +1,7 @@
 class Solution:
-    def two_sum(self, nums, target):
-        if (not nums or not len(nums)):
-            return -1
-
+    def twoSum(self, nums, target):
         dict = {}
+
         for i, num in enumerate(nums):
             if target - num in dict:
                 return ([dict[target - num], i])
