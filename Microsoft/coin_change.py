@@ -1,3 +1,7 @@
+# Input: coins = [1, 2, 5], amount = 11
+# Output: 3
+# Explanation: 11 = 5 + 5 + 1
+
 class Solution:
     def coinChange(self, coins, amount):
         dp = [0] + [float('inf')] * amount
