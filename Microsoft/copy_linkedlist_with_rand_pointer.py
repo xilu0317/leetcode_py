@@ -17,8 +17,8 @@ class Solution:
 
         # second traversal sets up the proper relationship between nodes
         while n:
-            dic[n].next = dic.get(n.next)
-            dic[n].random = dic.get(n.random)
+            dic.get(n).next = dic.get(n.next)
+            dic.get(n).random = dic.get(n.random)
             n = n.next
 
         return dic.get(head)
