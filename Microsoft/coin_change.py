@@ -3,7 +3,7 @@
 # Explanation: 11 = 5 + 5 + 1
 
 class Solution:
-    def coinChange(self, coins, amount):
+    def coin_change(self, coins, amount):
         dp = [0] + [float('inf')] * amount
 
         for i in range(1, amount + 1, 1):
