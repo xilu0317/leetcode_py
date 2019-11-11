@@ -20,6 +20,7 @@ class Solution:
                 stack.append(res)
                 stack.append(sign)
                 sign = 1
+                # The 'res' will ensure calculation happen inside the paren locally
                 res = 0
             elif c == ')':
                 res += sign * num
