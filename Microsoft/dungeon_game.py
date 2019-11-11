@@ -1,5 +1,3 @@
-
-
 class Solution:
     def calculate_minimum_HP(self, dungeon):
         if not dungeon:
@@ -11,8 +9,7 @@ class Solution:
 
         dp = [[INF] * (n + 1) for i in range(m + 1)]
 
-        dp[m][n - 1] = 1
-        dp[m - 1][n] = 1
+        dp[m][n - 1], dp[m - 1][n] = 1, 1
 
         for i in reversed(range(m)):
             for j in reversed(range(n)):
