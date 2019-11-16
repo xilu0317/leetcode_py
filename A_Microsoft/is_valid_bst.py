@@ -1,10 +1,10 @@
 class Solution(object):
-    def isValidBST(self, root, lessThan=float('inf'), largerThan=float('-inf')):
+    def is_valid_BST(self, root, less_than=float('inf'), larger_than=float('-inf')):
         if not root:
             return True
 
-        if root.val <= largerThan or root.val >= lessThan:
+        if root.val <= larger_than or root.val >= less_than:
             return False
 
-        return self.isValidBST(root.left, min(lessThan, root.val), largerThan) and \
-               self.isValidBST(root.right, lessThan, max(root.val, largerThan))
+        return self.is_valid_BST(root.left, min(less_than, root.val), larger_than) and \
+               self.is_valid_BST(root.right, less_than, max(root.val, larger_than))
