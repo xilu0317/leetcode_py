@@ -5,7 +5,7 @@ class ListNode:
 
 
 class Solution:
-    def hasCycle(self, head):
+    def has_cycle(self, head):
         if not head:
             return False
 
