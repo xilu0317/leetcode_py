@@ -1,11 +1,5 @@
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
 class Solution:
-    def addTwoNumbers(self, l1, l2):
+    def add_two_numbers(self, l1, l2):
         arr1, arr2 = [], []
         cur = l1
         while cur:
@@ -33,3 +27,9 @@ class Solution:
             cur = cur.next
 
         return dummy.next
+
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
