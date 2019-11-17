@@ -5,9 +5,9 @@ class Solution:
 
         q, res = [root], []
         while len(q):
-            _len, level = len(q), []
+            len_, level = len(q), []
 
-            for x in range(_len):
+            for x in range(len_):
                 node = q.pop(0)
                 level.append(node.val)
 

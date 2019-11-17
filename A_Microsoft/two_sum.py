@@ -1,11 +1,11 @@
 class Solution:
     def two_sum(self, nums, target):
-        dict_ = {}
+        dic = {}
 
         for i, x in enumerate(nums):
-            if target - x in dict_:
-                return [dict_[target - x], i]
+            if target - x in dic:
+                return [dic[target - x], i]
 
-            dict_[x] = i
+            dic[x] = i
 
         return None

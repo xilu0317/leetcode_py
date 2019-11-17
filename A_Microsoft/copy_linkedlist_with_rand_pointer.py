@@ -1,20 +1,20 @@
 class Solution:
     def copy_random_list(self, head):
-        dict_ = {}
+        dic = {}
         m = n = head
 
         # first traversal creates a mapping
         while m:
-            dict_[m] = Node(m.val, None, None)
+            dic[m] = Node(m.val, None, None)
             m = m.next
 
         # second traversal sets up the proper relationship between nodes
         while n:
-            dict_.get(n).next = dict_.get(n.next)
-            dict_.get(n).random = dict_.get(n.random)
+            dic.get(n).next = dic.get(n.next)
+            dic.get(n).random = dic.get(n.random)
             n = n.next
 
-        return dict_.get(head)
+        return dic.get(head)
 
 
 class Node:
