@@ -1,24 +1,24 @@
 class Solution:
     def add_two_numbers(self, l1, l2):
-        cur1 = l1, cur2 = l2
+        cur1, cur2 = l1, l2
         cur = dummy = ListNode(0)
-        sum = 0
+        _sum = 0
 
-        while (cur1 or cur2):
-            sum = sum // 10
+        while cur1 or cur2:
+            _sum = _sum // 10
 
-            if (cur1):
-                sum += cur1.val
+            if cur1:
+                _sum += cur1.val
                 cur1 = cur1.next
 
-            if (cur2):
-                sum += cur2.val
+            if cur2:
+                _sum += cur2.val
                 cur2 = cur2.next
 
-            cur.next = ListNode(sum % 10)
+            cur.next = ListNode(_sum % 10)
             cur = cur.next
 
-        if (sum >= 10):
+        if _sum >= 10:
             cur.next = ListNode(1)
 
         return dummy.next
