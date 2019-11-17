@@ -1,10 +1,10 @@
 class Solution:
     def two_sum(self, nums, target):
-        dict = {}
+        _dict = {}
 
-        for i, num in enumerate(nums):
-            if target - num in dict:
-                return ([dict[target - num], i])
-            dict[num] = i
+        for i, x in enumerate(nums):
+            if target - x in _dict:
+                return [_dict[target - x], i]
+            _dict[x] = i
 
-        return -1
+        return None
