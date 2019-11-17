@@ -8,10 +8,10 @@ class Solution:
             _len, level = len(q), []
 
             for x in range(_len):
-                n = q.pop(0)
-                level.append(n.val)
+                node = q.pop(0)
+                level.append(node.val)
 
-                for c in n.children:
+                for c in node.children:
                     q.append(c)
 
             res.append(level)
