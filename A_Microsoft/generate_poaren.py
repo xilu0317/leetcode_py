@@ -1,5 +1,5 @@
 class Solution:
-    def generateParenthesis(self, n):
+    def generate_parenthesis(self, n):
         res = []
 
         self.backtrack(res, '', 0, 0, n)
@@ -9,6 +9,7 @@ class Solution:
     def backtrack(self, res, _str, _open, close, _max):
         if len(_str) == _max * 2:
             res.append(_str)
+
             return
 
         if _open < _max:
