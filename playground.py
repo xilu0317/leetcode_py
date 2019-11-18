@@ -1,17 +1,10 @@
-class Solution:
-    def two_sum(self, nums, target):
-        if (not nums or not len(nums)):
-            return -1
-
-        dict = {}
-        for i, num in enumerate(nums):
-            if target - num in dict:
-                return ([dict[target - num], i])
-            dict[num] = i
-
-        return -1
+def foo():
+    x = 100
+    def inside():
+        def in2():
+            print(x)
+        return in2
+    return inside
 
 
-# testing code
-s = Solution()
-print(s.two_sum([1, 2, 3], 4))
+foo()()()
