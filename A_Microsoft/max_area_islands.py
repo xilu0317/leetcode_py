@@ -28,8 +28,8 @@ class Solution:
         return area
 
 
-class Solution:
-    # leetcode higly voted solution
+class Solution2:
+    # most upvoted solution
     def maxAreaOfIsland(self, grid):
         m, n = len(grid), len(grid[0])
 

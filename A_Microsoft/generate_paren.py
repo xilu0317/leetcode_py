@@ -6,14 +6,14 @@ class Solution:
 
         return res
 
-    def backtrack(self, res, _str, _open, close, _max):
-        if len(_str) == _max * 2:
-            res.append(_str)
+    def backtrack(self, res, string, open_, close, max_):
+        if len(string) == max_ * 2:
+            res.append(string)
 
             return
 
-        if _open < _max:
-            self.backtrack(res, _str + '(', _open + 1, close, _max)
+        if open_ < max_:
+            self.backtrack(res, string + '(', open_ + 1, close, max_)
 
-        if close < _open:
-            self.backtrack(res, _str + ')', _open, close + 1, _max)
+        if close < open_:
+            self.backtrack(res, string + ')', open_, close + 1, max_)

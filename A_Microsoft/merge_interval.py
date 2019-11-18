@@ -7,6 +7,7 @@ class Solution:
 
         res, pre = [], intervals[0]
 
+        # exclude the first term here
         for x in intervals[1:]:
             if pre[1] >= x[0]:
                 pre[1] = max(pre[1], x[1])
