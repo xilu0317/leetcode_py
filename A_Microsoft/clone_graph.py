@@ -1,11 +1,14 @@
+from collections import deque
+
+
 class Solution:
     def clone_graph(self, node):
         dic = {}
 
         # 1st BFS: create node-to-node mapping
-        q = [node]
+        q = deque([node])
         while(len(q)):
-            n = q.pop(0)
+            n = q.popleft()
             dic[n] = Node(n.val, [])
 
             for nb in n.neighbors:
@@ -13,10 +16,10 @@ class Solution:
                     q.append(nb)
 
         # 2nd BFS: associate nodes
-        q = [node]
+        q = deque([node])
         s = set()
         while (len(q)):
-            n = q.pop(0)
+            n = q.popleft()
 
             if (n not in s):
                 s.add(n)
