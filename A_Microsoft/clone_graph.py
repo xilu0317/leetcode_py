@@ -7,7 +7,7 @@ class Solution:
 
         # 1st BFS: create node-to-node mapping
         q = deque([node])
-        while(len(q)):
+        while len(q):
             n = q.popleft()
             dic[n] = Node(n.val, [])
 
@@ -18,7 +18,7 @@ class Solution:
         # 2nd BFS: associate nodes
         q = deque([node])
         s = set()
-        while (len(q)):
+        while len(q):
             n = q.popleft()
 
             if (n not in s):
