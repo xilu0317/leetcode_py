@@ -20,17 +20,12 @@ class Solution:
         grid[i][j] = 0
         area = 1
 
-        area += self.dfs(grid, i + 1, j)
-        area += self.dfs(grid, i - 1, j)
-        area += self.dfs(grid, i, j + 1)
-        area += self.dfs(grid, i, j - 1)
-
-        return area
+        return 0
 
 
 class Solution2:
     # most upvoted solution
-    def maxAreaOfIsland(self, grid):
+    def max_area_of_island_2(self, grid):
         m, n = len(grid), len(grid[0])
 
         def dfs(i, j):
