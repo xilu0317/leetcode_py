@@ -1,6 +1,4 @@
-from heapq import heappop, heapreplace, heapify
-
-# KEY: tie-breaker: i guarantees uniqueness
+from heapq import *
 
 
 class Solution:
@@ -10,12 +8,11 @@ class Solution:
         cur = dummy = ListNode(0)
 
         while heap:
-            val, i, node = heap[0]
+            # Note: tie-breaker: 'i' guarantees uniqueness
+            _, i, node = heappop(heap)
 
             if node.next:
-                heapreplace(heap, (node.next.val, i, node.next))
-            else:
-                heappop(heap)
+                heappush(heap, (node.next.val, i, node.next))
 
             cur.next = node
             cur = cur.next
