@@ -1,6 +1,6 @@
 class Solution(object):
     def can_finish(self, numCourses, prerequisites):
-        # check the syntax here
+        # list comprehension
         graph = [[] for _ in range(numCourses)]
         visited = [0 for _ in range(numCourses)]
 
