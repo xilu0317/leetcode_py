@@ -4,7 +4,7 @@ class Solution:
 
         for i, x in enumerate(nums):
             if target - x in dic:
-                return (dic[target - x], i)
+                return dic[target - x], i
 
             dic[x] = i
 
