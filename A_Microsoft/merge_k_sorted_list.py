@@ -5,8 +5,8 @@ class Solution:
     def merge_k_lists(self, lists):
         heap = [(head.val, i, head) for i, head in enumerate(lists) if head]
         heapify(heap)
-        cur = dummy = ListNode(-1)
 
+        cur = dummy = ListNode(-1)
         while heap:
             # Note: tie-breaker: 'i' guarantees uniqueness
             _, i, node = heappop(heap)
