@@ -2,7 +2,7 @@ from heapq import *
 
 
 class Solution:
-    def mergeKLists(self, lists):
+    def merge_k_lists(self, lists):
         heap = [(head.val, i, head) for i, head in enumerate(lists) if head]
         heapify(heap)
         cur = dummy = ListNode(-1)
