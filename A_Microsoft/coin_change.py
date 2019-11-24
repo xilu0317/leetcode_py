@@ -2,9 +2,12 @@
 # Output: 3
 # Explanation: 11 = 5 + 5 + 1
 
+
 class Solution:
     def coin_change(self, coins, amount):
-        dp = [0] + [float('inf')] * amount
+        MAX = float('inf')
+
+        dp = [0] + [MAX] * amount
 
         for i in range(1, amount + 1, 1):
             for j in range(len(coins)):
