@@ -1,5 +1,5 @@
 class Solution:
-    def convertToTitle(self, num):
+    def convert_to_title(self, num):
         capitals, res = [chr(x) for x in range(ord('A'), ord('Z') + 1)], []
 
         while num:
