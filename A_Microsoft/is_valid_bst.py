@@ -6,5 +6,5 @@ class Solution(object):
         if root.val <= MAX or root.val >= MIN:
             return False
 
-        return self.is_valid_BST(root.left, min(MIN, root.val), MAX) and \
-            self.is_valid_BST(root.right, MIN, max(root.val, MAX))
+        return self.is_valid_BST(root.left,  min(MIN, root.val), MAX) and \
+               self.is_valid_BST(root.right, MIN, max(root.val, MAX))
