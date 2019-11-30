@@ -2,7 +2,7 @@ from collections import deque
 
 
 class Solution:
-    def convertToTitle(self, num):
+    def convert_to_title(self, num):
         capitals = [chr(x) for x in range(ord('A'), ord('Z') + 1)]
         res = deque([])
 
