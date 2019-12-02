@@ -1,0 +1,1760 @@
+版权声明：本文为博主原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接和本声明。
+本文链接：https://blog.csdn.net/u012290414/article/details/44037185
+由于3月5号要进行Epic公司的Online Assessment，准备刷些面经做准备，毕竟这是我的第一次比较重要的面试。。
+
+这是我准备Epic技术面试的小专栏。。。希望面试的时候能做够30题+吧，这样做OA的时候会轻松一点。
+
+目前完成：29题
+
+
+
+/*************************************************我是分割线*******************************************************/
+
+虽然准备的比较充分了，但是还是悲剧了。。
+
+原因可能有以下几点：
+
+1，确实招人快招满了
+
+2，电话面试的设计题答的一坨屎。。另外三哥哥的口音仍然听不懂
+
+3，题做的还是不够多
+
+
+
+不管怎样，仍然努力刷题+提升自己背景双管齐下吧。。。提升背景是为了拿到更多面试，刷题是为了在面试中发挥的更优秀。Epic是我半年北美求职之路的开始。希望在今年十月毕业的时候能有好的offer吧！
+
+/*********************************************************************************************************************/
+
+
+
+Epic 01 Colorful Number
+
+
+
+本题题目要求如下：
+
+/* Description: Determine whether a number is colorful or not. 
+ * 263 is a colorful number because (2,6,3,2x6,6x3,2x3x6) are all different 
+ * whereas 236 is not because (2,3,6,2x3,3x6,2x3x6) have 6 twice. 
+ * So take all consecutive subsets of digits, take their product 
+ * and ensure all the products are different */
+
+
+我对这个的算法就是两次循环
+
+第一次：顺序加入2,6,3
+
+每次都检查
+
+第二次：
+
+检查2 * 6， 2 * 6 * 3，
+
+检查6 * 3
+
+实现代码如下：
+
+# include <iostream>
+# include <vector>
+# include <set>
+# include <string>
+ 
+using namespace std;
+ 
+bool color(int);
+ 
+int main(int argc, char** argv) {
+ 
+//	cout << color(263) << endl;
+	cout << color(236) << endl;
+//	cout << color(40) << endl;
+//	cout << color(41) << endl;
+//	cout << color(2357496) << endl;
+//	cout << color(2634) << endl;
+//	cout << color(0) << endl;
+//	cout << color(9) << endl;
+ 
+	return 0;
+}
+ 
+bool color(int num) {
+	if (num < 0)
+		return false;
+	set<int> s;
+	string str = to_string(num);
+	int color = str[0] - '0';
+	s.insert(color);
+	for (int i = 1; i < str.length(); ++i) {
+		int n = str[i] - '0';
+		cout << "check: " << n << endl;
+		if (s.find(n) != s.end())
+			return false;
+		else
+			s.insert(n);
+	}
+	for (int i = 0; i < str.length(); ++i) {
+		color = str[i] - '0';
+		for (int j = i + 1; j < str.length(); ++j) {
+			int n = str[j] - '0';
+			color *= n;
+			cout << "check: " << color << endl;
+			if (s.find(color) != s.end())
+				return false;
+			else
+				s.insert(color);
+		}
+	}
+	return true;
+}
+
+
+Epic 02 Well ordered password
+
+本题题目要求如下：
+
+/* Description: Find all the possible passwords, given the length of the password and that 
+ * it is a well ordered number (159 is well-ordered as 1<5<9) */
+这题就有点类似dfs了，
+举个简单的例子：
+
+下面是我画的一张图：
+
+
+
+下面的就是假设密码是0-4然后密码只有2位的解。
+
+由于第一层时，还没有数字，所以剩余2位，则最大数字是5-2=3.最小数字是parent + 1，但是没有parent，所以是0
+
+第二层，最小可取的是parent + 1，最大是 5 - 1 = 4
+
+这个基本就跟recursive解dfs一样，代码如下：
+
+# include <iostream>
+# include <vector>
+ 
+using namespace std;
+ 
+void well_ordered(int, int, int);
+ 
+vector<int> res;
+ 
+int main(int argc, char** argv) {
+	well_ordered(0, 0, 4);
+	for (int i = 0; i < res.size(); ++i)
+		cout << res[i] << endl;
+}
+ 
+void well_ordered(int num, int start, int remain) {
+	if (remain == 0)
+		res.push_back(num);
+	else {
+		for (int i = start + 1; i <= (10 - remain); ++i) {
+			well_ordered(num * 10 + i, i, remain - 1);
+		}
+	}
+}
+
+
+Epic 03 Spiral order
+
+
+
+题目要求如下：
+
+/* Description: If an N X N matrix is given, print it in spiral order. 
+ * Example: Below is 5 X 5 matrix 
+ * i l o v e 
+ * d i n t e 
+ * n i e e p 
+ * a v w r i 
+ * m a x e c 
+ * Print in spiral order. Output is iloveepicexamandinterview */
+
+本题曾经在leetcode中做过，我的博客里面也有这道题的分析，这里就不重复了，直接上传代码：
+# include <iostream>
+# include <vector>
+ 
+using namespace std;
+ 
+vector<char> spiral_order(vector<vector<char>>);
+ 
+int main(int argc, char** argv) {
+	vector<vector<char>> str = {
+		{'i', 'l', 'o', 'v', 'e'},
+		{'d', 'i', 'n', 't', 'e'},
+		{'n', 'e', 'w', 'e', 'p'},
+		{'a', 'i', 'v', 'r', 'i'},
+		{'m', 'a', 'x', 'e', 'c'}
+	};
+ 
+	vector<char> res = spiral_order(str);
+	for(int i = 0; i < res.size(); ++i)
+		cout << res[i];
+	cout << endl;
+ 
+	return 0;
+ 
+}
+ 
+vector<char> spiral_order(vector<vector<char>> str) {
+ 
+	vector<char> res;
+	int col_start = 0;
+	int col_end = 4;
+	int row_start = 0;
+	int row_end = 4;
+ 
+	while (true) {
+		/* go right */
+		for (int i = col_start; i <= col_end; ++i)
+			res.push_back(str[row_start][i]);
+		row_start += 1;
+		if (res.size() == 25)
+			break;
+		/* go down */
+		for (int j = row_start; j <= row_end; ++j)
+			res.push_back(str[j][col_end]);
+		col_end -= 1;
+		if (res.size() == 25)
+			break;
+		/* go left */
+		for (int i = col_end; i >= col_start; --i)
+			res.push_back(str[row_end][i]);
+		row_end -= 1;
+		if (res.size() == 25)
+			break;
+		/* go up */
+		for (int j = row_end; j >= row_start; --j)
+			res.push_back(str[j][col_start]);
+		col_start += 1;
+		if (res.size() == 25)
+			break;
+	}
+	return res;
+}
+
+
+Epic 04 Allowed password
+
+
+
+本题要求如下：
+
+/* Description: There is a security keypad at the entrance of a building. 
+ * It has 9 numbers 1 - 9 in a 3x3 matrix format. 
+ * 1 2 3 
+ * 4 5 6 
+ * 7 8 9 
+ * The security has decided to allow one digit error for a person but that digit 
+ * should be horizontal or vertical. Example: for 5 the user is allowed to enter 
+ * 2, 4, 6, 8 or for 4 the user is allowed to enter 1, 5, 7. IF the security code to 
+ * enter is 1478 and if the user enters 1178 he should be allowed. Write a function 
+ * to take security code from the user and print out if he should be allowed or not */
+
+这题难度并不高，如果在leetcode里面，就是个简单题水平。。而且因为最多检查一次是否是该数字上下左右，剩下的时候只要单纯比较是不是一样就行了。。
+那唯一一次比较我的处理是把user输入和原密码在keypad的位置计算出来，然后比较他们是不是相邻关系。。
+
+代码如下：
+
+# include <iostream>
+# include <vector>
+ 
+using namespace std;
+ 
+const vector<int> pwd = {1, 4, 7, 8};
+const vector<vector<int>> keypad = {
+	{1, 2, 3},
+	{4, 5, 6},
+	{7, 8, 9}
+};
+ 
+bool pwd_allowed(vector<int>);
+ 
+int main(int argc, char** argv) {
+ 
+	vector<int> user = {1, 4, 7, 8};
+	cout << "True or False: " << pwd_allowed(user) << endl;
+ 
+	return 0;
+}
+ 
+bool pwd_allowed(vector<int> user) {
+ 
+	bool mistake = false;
+	for (int i = 0; i < user.size(); ++i) {
+		if (user[i] == pwd[i])
+			continue;
+		else {
+			if (mistake == true)
+				return false;
+			else {
+				mistake = true;
+				int p_row;
+				int p_col;
+				int u_row;
+				int u_col;
+				/* find the posistion of the pwd[i] */
+				for (int j = 0; j < keypad.size(); ++j) {
+					for (int k = 0; k < keypad[0].size(); ++k) {
+						if (pwd[i] == keypad[j][k]) {
+							p_row = j;
+							p_col = k;
+						}
+						if (user[i] == keypad[j][k]) {
+							u_row = j;
+							u_col = k;
+						}
+					}
+				}
+				/* 4 condition */
+				if ((p_row == u_row and p_col == u_col - 1) 
+					or (p_row == u_row and p_col == u_col + 1) 
+					or (p_col == u_col and p_row == u_row - 1) 
+					or (p_col == u_col and p_row == u_row + 1))
+					;
+				else
+					return false;
+			}
+		}
+	}
+	return true;
+}
+
+Epic 05 Continuous alphabets
+
+
+
+题目要求如下：
+
+/* Description: Print continuous alphabets from a sequence of arbitrary alphabets 
+ * For example: 
+ * Input: abcdefljdflsjflmnopflsjflasjftuvwxyz 
+ * Output: abcdef; mnop; tuvwxyz 
+ * Input: AbcDefljdflsjflmnopflsjflasjftuvWxYz 
+ * Output: abcdef; mnop; tuvwxyz */
+本题算法第一步就是将所有的都转为lower case，然后开始计算
+如果和前面的字母相同，则在str 加上这个字母，如果不同，则看是否str已经存储大于1个元素，如果大于1个，则将其存入vector中，否则不作处理，但是无论如何都要以当前的char建立一个新的str
+
+详细代码如下：
+
+# include <iostream>
+# include <vector>
+# include <string>
+ 
+using namespace std;
+ 
+vector<string> con_alpha(string);
+ 
+int main(int argc, char** argv) {
+ 
+	string input = "AbcDefljdflsjflmnopflsjflasjftuvWxYz";
+	for (int i = 0; i < input.length(); ++i)
+		input[i] = tolower(input[i]);
+	cout << input << endl;
+ 
+	vector<string> res = con_alpha(input);
+	for (int i = 0; i < res.size(); ++i)
+		cout << res[i] << endl;
+ 
+	return 0;
+}
+ 
+vector<string> con_alpha(string input) {
+	vector<string> res;
+	int i = 1;
+	string str = string(1, input[0]);
+	while (i < input.length()) {
+		char prev = input[i-1];
+		char cur = input[i];
+		if (prev + 1 == cur) {
+			str += cur;
+		}
+		else {
+			if (str.length() > 1) {
+				res.push_back(str);
+			}
+			str = string(1, input[i]);
+		}
+		++i;
+	}
+	if (str.length() > 1)
+		res.push_back(str);
+	return res;
+}
+
+Epic 06 Palindromes
+
+
+本题题目要求如下：
+
+/* Print all palindromes of size greater than equal to 3 of a given string. (DP) */
+
+这题的dp算法我没有想出来，是参考一个网友的答案，在careercup上id是XiaoPiGU。。。这名字真让人无语。。。
+要想让[i,j]是palindrome，则条件是：[i+1,j-1]是palindrom并且[i] == [j]，该dp算法就是根据这个做的
+
+pal[j-1] == 1就意味着[1+1,j-1]是palindrome，再判断[i]和[j],如果想等，则palin[j] = 1，且[i,j]为palindrome，否则palin[j] = 0
+
+代码如下：
+
+int main(int argc, char** argv) {
+ 
+	string str = "ababa";
+	vector<string> res = Palindrome(str);
+ 
+	for (int i = 0; i < res.size(); ++i)
+		cout << res[i] << endl;
+ 
+	return 0;
+}
+ 
+vector<string> Palindrome(string str) {
+	vector<string> res;
+	vector<bool> pal(str.size(), 0);
+	if (str.size() < 3)
+		return res;
+	else {
+		for (int i = str.size() - 1; i >= 0; --i) {
+			for (int j = str.size() - 1; j >= i; --j) {
+				if (str[i] == str[j] and (j - i <= 1 or pal[j-1] == 1)) {
+					pal[j] = 1;
+					if (j - i > 1)
+						res.push_back(str.substr(i, j - i + 1));
+				}
+				else
+					pal[j] = 0;
+			}
+		}
+	}
+	return res;
+}
+
+Epic 07 Average of the remaining numbers
+
+
+本题题目要求如下：
+
+/* Description: User inputs a series of numbers and terminates the series by a zero. 
+ * Your program should find the first three maximum values in the series and exclude them 
+ * from the series and compute the average of the remaining numbers. (excluding zero as well) 
+ * Ex - 3, 7, 12, 2, 25, 8, 9, 13, 10, 0 
+ * First three maximum numbers = 25, 13, 12 
+ * Average of the rest = (3 + 7 + 2 + 8 + 9 + 10) / 6 = 6.5 */
+算是最简单的题了，没有什么算法可言。。直接上代码：
+# include <iostream>
+# include <climits>			
+ 
+using namespace std;
+ 
+double average();
+ 
+int main(int argc, char** argv) {
+ 
+	cout << average() << endl;
+ 
+	return 0;
+}
+ 
+double average() {
+	int tmp;
+	int max1 = INT_MIN;
+	int max2 = INT_MIN;
+	int max3 = INT_MIN;
+	int count = 0;
+	int sum = 0;
+	while (cin >> tmp) {
+		if (tmp == 0)
+			break;
+		else {
+			++count;
+			sum += tmp;
+			if (tmp > max1) {
+				max1 = tmp;
+				if (tmp > max2) {
+					swap(max1, max2);
+					if (tmp > max3) {
+						swap(max2, max3);
+					}
+				}
+			}
+		}
+	}
+	double res = 1.0 * (sum - max1 - max2 - max3) / (count - 3);
+	cout << max1 << ", " << max2 << ", " << max3 << endl;
+	return res;
+}
+
+
+Epic 08 Triangle
+
+
+题目要求如下：
+
+/* Description: Given a array 
+ * {{ 4,7,3,6,7}} 
+ * construct a triangle like 
+ * {{81}} 
+ * {{40,41}} 
+ * {{21,19,22}} 
+ * {{11,10,9,13}}
+ * {{ 4,7,3,6,7}} */
+这种类型的题貌似在leetcode上见过，用recursive求解，层层嵌套即可，但是要将triangle放在函数的最后，这样就会最先加入[81]然后再[40,41]
+下面说明了过程：
+
+recur(level 5) {
+
+recur(level 4);
+
+push(level 5);
+}
+
+详细代码如下：
+
+# include <vector>
+# include <iostream>
+ 
+using namespace std;
+ 
+void triangle(vector<int>);
+vector<vector<int>> res;
+ 
+int main(int argc, char** argv) {
+	vector<int> arr = {4, 7, 3, 6, 7};
+	triangle(arr);
+	for (int i = 0; i < res.size(); ++i) {
+		for (int j = 0; j < res[i].size(); ++j) {
+			cout << res[i][j] << " ";
+		}
+		cout << endl;
+	}
+}
+ 
+void triangle(vector<int> arr) {
+	if (arr.size() == 0)
+		return;
+	else if (arr.size() > 1) {
+		vector<int> new_arr(arr.size() - 1);
+		for (int i = 0; i < new_arr.size(); ++i)
+			new_arr[i] = arr[i] + arr[i+1];
+		triangle(new_arr);
+	}
+	res.push_back(arr);
+}
+
+Epic 09 Print stars
+
+
+
+本题题目要求如下：
+
+/* Write a software to print triangle made of *s. Given the height and width of Triangles in terms of number of stars. 
+ * like to output 
+ * *     
+ * * * 
+ * * * * 
+ * given you have to use 3 stars or the height is 3 stars. */
+
+我有点不敢相信这是面经中的题目。。。。谁碰到这道题真算是中奖了。。。
+另外上面的star别混了。每行第一个star都是注释的标志。。
+
+代码如下：
+
+# include <iostream>
+# include <vector>
+ 
+using namespace std;
+ 
+vector<vector<char>> star(int);
+ 
+int main(int argc, char** argv) {
+	int height = 4;
+	vector<vector<char>> res = star(height);
+	for (int i = 0; i < res.size(); ++i) {
+		for (int j = 0; j < res[i].size(); ++j) {
+			cout << res[i][j];
+		}
+		cout << endl;
+	}
+}
+ 
+vector<vector<char>> star(int height) {
+	vector<vector<char>> ret;
+	for (int i = 1; i <= height; ++i) {
+		vector<char> tmp(i, '*');
+		ret.push_back(tmp);
+	}
+	return ret;
+}
+
+Epic 10 Seed Number
+
+
+
+题目要求如下：
+
+/* Description: Find the seed of a number. 
+ * Eg : 1716 = 143*1*4*3 =1716 so 143 is the seed of 1716. find all possible seed for a given number. */
+
+本题我当时乍一看也不会，但其实很简单，就是从sqrt(num) - num之间找一个数字，每个都检测，它本身乘以每位的数字，看看积是不是原数，如果是就返回，如果不是，就继续找，代码如下：
+# include <iostream>
+# include <cmath>
+ 
+using namespace std;
+ 
+int seed_number(int);
+ 
+int main(int argc, char** argv) {
+	int num = 1716;
+	int res = seed_number(num);
+	cout << res << endl;
+}
+ 
+int seed_number(int num) {
+	for (int seed = sqrt(num); seed < num; ++seed) {
+		if (num % seed == 0) {
+			int product = seed;
+			int tmp = seed;
+			while (tmp != 0) {
+				product *= (tmp % 10);
+				tmp /= 10;
+			}
+			if (product == num)
+				return seed;
+		}
+	}
+}
+
+Epic 11 Permutations of numbers
+
+
+
+本题题目要求如下：
+
+/* Description: Length is given as input.Print all possible permutations of numbers between 0-9. 
+ * Eg: if input length=4 
+ * all possible combinations can be 0123, 1234, 5678,9864,...etc all combinations of length from 
+ * in all numbers between 0-9 */
+
+个人认为这道题就跟所有的backtracking，或者dfs算法一样。。。
+代码如下：
+
+# include <iostream>
+# include <vector>
+ 
+using namespace std;
+ 
+vector<vector<int>> res;
+void permutation(vector<int>, vector<int>, int);
+ 
+int main(int argc, char** argv) {
+ 
+	vector<int> digits = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+	vector<int> tmp;
+	permutation(tmp, digits, 2);
+	for (int i = 0; i < res.size(); ++i) {
+		for (int j = 0; j < res[i].size(); ++j) {
+			cout << res[i][j];
+		}
+		cout << endl;
+	}
+	return 0;
+}
+ 
+void permutation(vector<int> str, vector<int> digits, int n) {
+	if (str.size() == n) {
+		res.push_back(str);
+		return;
+	}
+	else {
+		for (int i = 0; i < digits.size(); ++i) {
+			int tmp = digits[i];
+			digits.erase(digits.begin() + i);
+			str.push_back(tmp);
+			permutation(str, digits, n);
+			str.pop_back();
+			digits.insert(digits.begin() + i, tmp);
+		}
+	}
+}
+
+Epic 12 Snake sequence
+
+
+
+本题题目要求如下：
+
+/* You are given a grid of numbers. A snake sequence is made up of adjacent numbers 
+ * such that for each number, the number on the right or the number below it is +1 or -1 its value. 
+ * For example, 
+ * 1 3 2 6 8 
+ * -9 7 1 -1 2
+ * 1 5 0 1 9 
+ * In this grid, (3, 2, 1, 0, 1) is a snake sequence. 
+ * Given a grid, find the longest snake sequences and their lengths 
+ * (so there can be multiple snake sequences with the maximum length). */
+
+本题耗费了我不少时间，是用dp做的，dp[i][j]存储以访问过的节点为起点，该点为终点的最长的序列。。所以dp[i][j]就应该是d[i-1][j]加上该位置元素，dp[i][j-1]加上该位置元素这两者的最大值。。。这两者的存在条件分别是[i-1][j]与[i][j]只差1，[i][j-1]与[i][j]只差一，如果这种情况都不存在，则dp[i][j]只包含[i][j]这一个元素形成的序列。。
+该动态规划算法代码如下：
+
+# include <iostream>
+# include <climits>
+# include <cmath>
+# include <vector>
+ 
+using namespace std;
+ 
+const vector<vector<int>> input = {
+	{1, 3, 2, 6, 8},
+	{-9, 7, 1, -1, 2},
+	{1, 5, 0, 1, 9}
+};
+vector<int> find_snake();
+ 
+int main(int argc, char** argv) {
+ 
+	vector<int> res = find_snake();
+ 
+	for (int i = 0; i < res.size(); ++i)
+		cout << res[i] << " ";
+	cout << endl << "length: " << res.size() << endl;
+ 
+	return 0;
+}
+ 
+vector<int> find_snake() {
+	vector<int> longest;
+	vector<vector<vector<int>>> sequence(input.size(), vector<vector<int>>(input[0].size(), vector<int>()));
+ 
+	for (int i = 0; i < input.size(); ++i) {
+		for (int j = 0; j < input[0].size(); ++j) {
+			sequence[i][j].push_back(input[i][j]);
+			if (i > 0 and abs(input[i][j] - input[i-1][j]) == 1) {
+				if (sequence[i][j].size() < sequence[i-1][j].size() + 1) {
+					sequence[i][j].assign(sequence[i-1][j].begin(), sequence[i-1][j].end());
+					sequence[i][j].push_back(input[i][j]);
+				}
+			}
+			if (j > 0 and abs(input[i][j] - input[i][j-1]) == 1) {
+				if (sequence[i][j].size() < sequence[i][j-1].size() + 1) {
+					sequence[i][j].assign(sequence[i][j-1].begin(), sequence[i][j-1].end());
+					sequence[i][j].push_back(input[i][j]);
+				}
+			}
+			if (sequence[i][j].size() > longest.size())
+				longest.assign(sequence[i][j].begin(), sequence[i][j].end());
+		}
+	}
+	return longest;
+}
+
+Epic 13 Unique Number
+
+
+
+题目要求如下：
+
+/* Description: Write, efficient code for extracting unique elements from 
+ * a sorted list of array. e.g. (1, 1, 3, 3, 3, 5, 5, 5, 9, 9, 9, 9) -> (1, 3, 5, 9). */
+
+其实这题我觉得没啥好说的。。就当熟悉一下stl的链表操作吧。。直接上代码：
+# include <iostream>
+# include <list>
+# include <vector>
+ 
+using namespace std;
+ 
+list<int> unique(list<int>);
+ 
+const vector<int> arr = {1, 1, 3, 3, 3, 5, 5, 5, 9, 9, 9, 9};
+ 
+int main(int argc, char** argv) {
+ 
+	list<int> arr_list(arr.begin(), arr.end());
+ 
+	list<int> res = unique(arr_list);
+	
+	for (list<int>::iterator it = res.begin(); it != res.end(); ++it)
+		cout << *it << " ";
+	cout << endl;
+	return 0;
+}
+ 
+list<int> unique(list<int> arr_list) {
+	list<int> res;
+	for (list<int>::iterator it = arr_list.begin(); it != arr_list.end(); ++it) {
+		if (*it == res.back())
+			continue;
+		else
+			res.push_back(*it);
+	}
+	return res;
+}
+
+Epic 14 Valid Password
+
+
+
+本题题目要求如下：
+
+/* Description: In 1-9 keypad one key is not working. If some one enters a password then 
+ * not working key will not be entered. You have given expected password and entered password.
+ * Check that entered password is valid or not 
+ * Ex: entered 164, expected 18684 (you need to take care as when u enter 
+ * 18684 and 164 only both will be taken as 164 input) */
+个人认为这题如果不给测试的话，几乎很难得到完美解。。。大致算法大家都知道，但是很难做到尽善尽美。
+先说下要限制的几个条件吧：
+
+1，限制出现过两个不同的元素：只许有一个broken key,所以如果pwd[j] != enter[i],  if(pwd[j] != broken) return false
+
+2，限制元素种类相同，但是两个string仍然不同：比如：1246和12646，所以在检测到第一个6，将其设为broken的时候，即使之后的pwd[j] == enter[i]也要检测enter[i]是否等于broken
+
+3，enter提前pwd结束，此时要检测pwd后面的元素是不是都是broken
+
+4，pwd提前结束，那肯定是错的
+
+代码如下：
+
+# include <iostream>
+# include <string>
+ 
+using namespace std;
+ 
+bool valid_pwd(string, string);
+ 
+int main(int argc, char** argv) {
+ 
+	string enter = "1246";
+	string pwd = "12646";
+ 
+	cout << "Result: " << valid_pwd(enter, pwd) << endl;
+ 
+	return 0;
+}
+ 
+bool valid_pwd(string enter, string pwd) {
+	int i;
+	int j;
+	char broken = 'a';
+	for (i = 0, j = 0; i < enter.length() and j < pwd.length(); ++i, ++j) {
+		if (enter[i] == pwd[j]) {
+			if (broken != 'a' and enter[i] == broken)
+				return false;
+		}
+		else {
+			if (broken == 'a')
+				broken = pwd[j];
+			else {
+				if (pwd[j] != broken)
+					return false;
+			}
+			--i;
+		}
+	}
+	while (j < pwd.length() and pwd[j] == broken)
+		++j;
+	if (i == enter.length() and j == pwd.length())
+		return true;
+	else
+		return false;
+}
+
+Epic 15 Count and say
+
+
+
+本题题目要求如下：
+
+/* Description: Implement LookAndSay function. For example, first, let user input a number, 
+ * say 1. Then, the function will generate the next 10 numbers which satisfy this condition: 
+ * 1, 11,21,1211,111221,312211... 
+ * explanation: first number 1, second number is one 1, so 11. 
+ * Third number is two 1(previous number), so 21. next number one 2 one 1, so 1211 and so on... */
+本题跟leetcode上的count and say是一样的，我的博客里面也有简单说明，而且这本身就是一道简单题，就不多废话了。。直接上代码
+# include <iostream>
+# include <string>
+# include <vector>
+ 
+using namespace std;
+ 
+string count_and_say(string);
+ 
+int main(int argc, char** argv) {
+ 
+	vector<string> arr;
+	string str = "1";
+	arr.push_back(str);
+	int n = 10;
+ 
+	for (int i = 1; i < n; ++i) {
+		str = count_and_say(str);
+		arr.push_back(str);
+	}
+ 
+	for (int i = 0; i < arr.size(); ++i)
+		cout << arr[i] << endl;
+	return 0;
+}
+ 
+string count_and_say(string str) {
+	char tmp = str[0];
+	int count = 1;
+	string ret;
+	for (int i = 1; i < str.length(); ++i) {
+		if (str[i] == str[i-1]) {
+			++count;
+		}
+		else {
+			ret.append(to_string(count));
+			ret += str[i-1];
+			count = 1;
+		}
+	}
+	ret.append(to_string(count));
+	ret += str[str.length()-1];
+	return ret;
+}
+
+Epic 16 Substring Addition
+
+
+
+本题题目要求如下
+
+/* Description: Substring Addition 
+ * Write a program to add the substring 
+ * eg :say you have a list {1 7 6 3 5 8 9 } and user is entering a sum 16.
+ * Output should display (2-4) that is {7 6 3} cause 7+6+3=16. */
+本题我直接就用brute-force的方法求解，这题我的解法也没啥算法可言，直接上代码：
+# include <iostream>
+# include <vector>
+ 
+using namespace std;
+ 
+string check(vector<int>, int);
+ 
+int main(int argc, char** argv) {
+ 
+	int input[] = {1, 7, 6, 3, 5, 8, 9};
+	vector<int> arr(input, input + sizeof(input)/sizeof(input[0]));
+	int sum = 16;
+	string res = check(arr, sum);
+	cout << res << endl;
+	return 0;
+}
+ 
+string check(vector<int> arr, int sum) {
+	for (int i = 0; i < arr.size(); ++i) {
+		int total = 0;
+		for (int j = i; j < arr.size(); ++j) {
+			total += arr[j];
+			if (total == sum)
+				return to_string(i+1).append("-").append(to_string(j+1));
+		}
+	}
+	return "Not found";
+}
+
+Epic 17 A to one
+
+本题题目要求如下：
+
+* Description: From a given string, replace all instances of 'a' with 'one' and 'A' with 'ONE'. 
+ * Example Input: 
+ * " A boy is playing in a garden" 
+ * Example Output: 
+ * " ONE boy is playing in one garden" 
+ * -- Not that 'A' and 'a' are to be replaced only when they are single characters, not as part of another word. */
+我觉得本题是没有什么意义的。。。也完全不知道考点在哪里。。尤其这种题，感觉不同语言的难度会有不少差别，说不定用个牛逼点的built-in function，就直接一步搞定。。
+就说说C++怎么解的吧，虽然解法并不严谨。。
+
+我就是用stringstream把该句子parse成多个单词，再替换，组合成新的句子。。
+
+代码如下：
+
+# include <iostream>
+# include <string>
+# include <vector>
+# include <sstream>
+ 
+using namespace std;
+ 
+string a_to_one(string);
+ 
+int main(int argc, char** argv) {
+ 
+	string str = " A boy is playing in a garden";
+ 
+	string ret = a_to_one(str);
+ 
+	cout << ret << endl;
+ 
+	return 0;
+}
+ 
+string a_to_one(string str) {
+	stringstream ss(str);
+	vector<string> res;
+	string word;
+	while (ss >> word) {
+		if (word == "a")
+			res.push_back("one");
+		else if (word == "A")
+			res.push_back("ONE");
+		else
+			res.push_back(word);
+	}
+	string ret(res[0]);
+	for (int i = 1; i < res.size(); ++i)
+		ret.append(" ").append(res[i]);
+	return ret;
+}
+
+stringstream感觉挺重要的而且很强大，搞完epic面试，专门研究下用法
+
+
+Epic 18 Well-ordered String
+
+
+
+题目要求如下：
+
+/* Description: You know a password is well-ordered string. Well-ordered string means that 
+ * the order of the characters is in an alphabetical increasing order. Like “abEm” is 
+ * a well-ordered number. However, “abmE” is not a well-order number. Given an input # 
+ * that tells you also how many digits are in the password, print all possible passwords. */
+
+本题的算法并不难，就是普通的dfs就能解决问题，代码相当之短，大家看了后就会明白。。
+就是注意一个新知识：如果char A = 'a'，
+
+++A就是 'b'
+
+但是怎么到任意元素呢？
+
+A + i是行不通的，至少在我用的gcc 4.8,2是不支持的。。需要强制转换：static_cast<char>('a' + i)
+
+详细代码如下：
+
+# include <iostream>
+# include <string>
+# include <vector>
+ 
+using namespace std;
+ 
+vector<string> res;
+ 
+void dfs(int, int, string);
+ 
+int main(int argc, char** argv) {
+ 
+	int remain = 4;
+	dfs(remain, 0, "");
+ 
+	for (int i = 0; i < res.size(); ++i)
+		cout << res[i] << endl;
+ 
+	return 0;
+}
+ 
+void dfs(int remain, int start, string prefix) {
+	if (remain == 0)
+		res.push_back(prefix);
+	else {
+		for (int i = start; i <= 26 - remain; ++i) {
+			dfs(remain - 1, i + 1, prefix + static_cast<char>('A' + i));
+			dfs(remain - 1, i + 1, prefix + static_cast<char>('a' + i));
+		}
+	}
+}
+
+Epic 19 Phone numbers
+
+
+
+题目要求如下：
+
+/* Description: Print all valid phone numbers of length n subject to following constraints: 
+ * 1.If a number contains a 4, it should start with 4 
+ * 2.No two consecutive digits can be same 
+ * 3.Three digits (e.g. 7,2,9) will be entirely disallowed, take as input */
+
+本题仍然我是用dfs来解决的，把三个限制条件加上，并不难。。。基本就是leetcode里面easy题的水准。代码如下：
+# include <iostream>
+# include <vector>
+# include <string>
+ 
+using namespace std;
+ 
+vector<string> res;
+const string digits("0134568");
+ 
+void dfs(string, int);
+ 
+int main(int argc, char** argv) {
+ 
+	int count = 4;
+	dfs("", count);
+ 
+	for (int i = 0; i < res.size(); ++i)
+		cout << res[i] << endl;
+ 
+	return 0;
+}
+ 
+void dfs(string num, int count) {
+	if (num.length() == count)
+		res.push_back(num);
+	else {
+		for (int i = 0; i < digits.length(); ++i) {
+			if (num.length() > 0) {
+				if (digits[i] == num[num.length()-1])
+					continue;
+				if (digits[i] == '4' and num[0] != '4')
+					continue;
+			}
+			dfs(num + digits[i], count);
+		}
+	}
+}
+
+Epic 20 SMS Problem
+
+
+
+题目要求如下：
+
+/* SMS Problem 
+ * 1 - NULL, 2 - ABC, 3 - DEF, 4 - GHI, 5 - JKL, 6 - MON, 7 - PQRS, 8 - TUV, 9 - WXYZ, * - <Space>, # - <Break> 
+ * We must convert the numbers to text. 
+ * Eg 
+ * I/P - O/P 
+ * 22 - B 
+ * 23 - AD 
+ * 223 - BD 
+ * 22#2 - BA (# breaks the cycle) 
+ * 3#33 - DE 
+ * 2222 - 2 
+ * 2222#2 - 2A 
+ * 22222 - A (cycle must wrap around) 
+ * 222222 - B */
+
+本题就是单纯的考细心。。。Epic的题感觉挺无聊的。。没啥算法可言，难度基本就是leetcode里面的easy，但是这种题不给调试的机会又很难一次写对。。
+代码如下：
+
+# include <iostream>
+# include <string>
+# include <vector>
+ 
+using namespace std;
+ 
+string code[] = {"", "ABC2", "DEF3", "GHI4", "JKL5", "MON6", "PQRS7", "TUV8", "WXYZ9"};
+vector<string> hash_map(code, code + sizeof code / sizeof code[0]);
+ 
+string sms(string);
+ 
+int main(int argc, char** argv) {
+	
+	string str("22213#33");
+	cout << sms(str) << endl;
+}
+ 
+string sms(string str) {
+	string res;
+	for (int i = 0; i < str.length(); ++i) {
+		if (str[i] == '1')
+			continue;
+		else if (str[i] == '*')
+			res += ' ';
+		else if (str[i] == '#')
+			continue;
+		else {
+			int count = 1;
+			while (i + 1 < str.length() and str[i] == str[i+1]) {
+				++count;
+				++i;
+			}
+			res += hash_map[str[i] - '1'][count % (hash_map[str[i] - '1'].size()) - 1];
+		}
+	}
+	return res;
+}
+
+Epic 21 Keypad Permutation
+
+
+
+本题题目要求如下：
+
+/* Description: key pad question - you how your phone has letters on the number keys. 
+ * for example, number 2 has ABC on it, number 3 has DEF, 4 number has GHI,... , 
+ * and number 9 has WXYZ. Write a program that will print out all of the possible 
+ * combination of those letters depending on the users input. For example, 
+ * say a user presses 234, the output should be 
+ * ADG, ADH, ADI, AEG, AEH, AEI, AFG, AFH, AFI 
+ * BDG, BDH, BDI, BEG, BEH, BEI, BFG, BFH, BFI 
+ * CDG, CDH, CDI, CEG, CEH, CEI, CFG, CFH, CFI */
+
+Leetcode上又几乎一模一样的题，我的博客里面有讲解。。叫letter combinations of phone numbers
+
+这里就不多废话了。。。这种combination的题很多都可以用DFS/Backtracking解决，这题也不例外。。。直接上代码：
+
+# include <iostream>
+# include <vector>
+# include <string>
+# include <unordered_map>
+ 
+using namespace std;
+ 
+vector<string> res;
+unordered_map<char, string> str_map;
+ 
+void init();
+void dfs(string, string, int);
+ 
+int main(int argc, char** argv) {
+	string input = "234";
+	init();
+	dfs("", input, 0);
+	for (int i = 0; i < res.size(); ++i)
+		cout << res[i] << endl;
+}
+ 
+void init() {
+	str_map['2'] = "ABC";
+	str_map['3'] = "DEF";
+	str_map['4'] = "GHI";
+	str_map['5'] = "JKL";
+	str_map['6'] = "MNO";
+	str_map['7'] = "PQRS";
+	str_map['8'] = "TUV";
+	str_map['9'] = "WXYZ";
+}
+ 
+void dfs(string tmp, string input, int i) {
+	if (tmp.size() == input.size())
+		res.push_back(tmp);
+	else {
+		for (int j = 0; j < str_map[input[i]].size(); ++j) {
+			dfs(tmp + str_map[input[i]][j], input, i + 1);
+		}
+	}
+}
+
+Epic 22 The stepping number
+
+
+
+题目要求如下：
+
+/* Description: A number is called as a stepping number if the adjacent digits are having 
+ * a difference of 1. For eg. 8,343,545 are stepping numbers. While 890, 098 are not. 
+ * The difference between a ‘9’ and ‘0’ should not be considered as 1. 
+ * Given start number(s) and an end number(e) your function should list out all the 
+ * stepping numbers in the range including both the numbers s & e. */
+本题仍然是backtracking/dfs的套路，没有太多的新意。。代码如下：
+# include <iostream>
+# include <string>
+# include <vector>
+ 
+using namespace std;
+ 
+vector<int> res;
+ 
+void dfs(int, int, int, int);
+ 
+int main(int argc, char** argv) {
+ 
+	int s = 1;
+	int e = 1000000;
+	string s_str = to_string(s);
+	string e_str = to_string(e);
+	for (int i = s_str.length(); i < e_str.length(); ++i) {
+		for (int j = 1; j <= 9; ++j)
+			dfs(s, e, i, j);
+	}
+	for (int i = 0; i < res.size(); ++i)
+		cout << res[i] << endl;
+ 
+	return 0;
+}
+ 
+void dfs(int s, int e, int depth, int tmp) {
+	if (to_string(tmp).length() == depth) {
+		if (tmp < s or tmp > tmp)
+			return;
+		else
+			res.push_back(tmp);
+	}
+	else {
+		if (tmp % 10 != 9)
+			dfs(s, e, depth, tmp * 10 + tmp % 10 + 1);
+		if (tmp % 10 != 0)
+			dfs(s, e, depth, tmp * 10 + tmp % 10 - 1);
+	}
+}
+
+Epic 23 Goldbach's conjecture
+
+
+
+本题的背景是哥德巴赫猜想。。其实要不是这道题。。我都不知道哥德巴赫猜想是什么。。。
+
+题目要求如下：
+
+/* Description: Every even integer greater than 2 can be expressed as the sum of two primes. 
+ * Write a function which takes a number as input, verify if is an even number 
+ * greater than 2 and also print at least one pair of prime numbers. */
+哥德巴赫猜想听着确实唬人。。但是这题很简单，就是写个判断prime的函数就行了。。。
+代码如下：
+
+# include <iostream>
+# include <cmath>
+ 
+using namespace std;
+ 
+bool isPrime(int);
+ 
+int main(int argc, char** argv) {
+ 
+	for (int check = 4; check <= 200; check += 2) {
+		for (int i = 2; i <= check / 2; ++i) {
+			if (isPrime(i) and isPrime(check - i)) {
+				cout << check << ": " << i << " and " << check - i << endl;
+				break;
+			}
+		}
+	}
+	return 0;
+}
+ 
+bool isPrime(int num) {
+	if (num == 2)
+		return true;
+	else {
+		for (int i = 2; i <= sqrt(num); ++i) {
+			if (num % i == 0)
+				return false;
+		}
+	}
+	return true;
+}
+
+Epic 24 Finding Words
+
+
+
+题目要求如下：
+
+/* Description: Write a program for a word search. If there is an NxN grid with one letter 
+ * in each cell. Let the user enter a word and the letters of the word are said to be found 
+ * in the grid either the letters match vertically, horizontally or diagonally in the grid. 
+ * If the word is found, print the coordinates of the letters as output. */
+
+本题我仍然使用dfs，每次确定了一个点之后，就对周围八个点进行判断，看是否继续dfs，代码如下，这次我写的虽然很多，但是后面的是init()函数，其实本来不用写这么多废代码的，核心函数就是dfs：
+# include <iostream>
+# include <vector>
+# include <string>
+ 
+using namespace std;
+ 
+vector<vector<char>> grid;
+vector<vector<string>> res;
+ 
+void init();
+void dfs(int, int, string, vector<string>);
+ 
+int main(int argc, char** argv) {
+	
+	init();
+	for (int i = 0; i < grid.size(); ++i) {
+		for (int j = 0; j < grid[0].size(); ++j)
+			cout << grid[i][j] << " ";
+		cout <<  endl;
+	}
+	string word = "oje";
+	vector<string> inter_val;
+	for (int i = 0; i < grid.size(); ++i) {
+		for (int j = 0; j < grid[0].size(); ++j) {
+			if (grid[i][j] == word[0]) {
+				dfs(i, j, word, inter_val);
+			}
+		}
+	}
+ 
+	for (int i = 0; i < res.size(); ++i) {
+		for (int j = 0; j < res[0].size(); ++j)
+			cout << res[i][j] << endl;
+		cout << endl;
+	}
+	return 0;
+}
+ 
+void dfs(int i, int j, string word, vector<string> inter_val) {
+	string tmp;
+	tmp.append(to_string(i)).append("----").append(to_string(j));
+	inter_val.push_back(tmp);
+	if (inter_val.size() == word.size())
+		res.push_back(inter_val);
+	else {
+		if (i > 0 and word[inter_val.size()] == grid[i-1][j])
+			dfs(i-1, j, word, inter_val);
+		if (j > 0 and word[inter_val.size()] == grid[i][j-1])
+			dfs(i, j-1, word, inter_val);
+		if (i < grid.size() -1 and word[inter_val.size()] == grid[i+1][j])
+			dfs(i+1, j, word, inter_val);
+		if (j < grid[0].size() -1 and word[inter_val.size()] == grid[i][j+1])
+			dfs(i, j+1, word, inter_val);
+		if (i > 0 and j > 0 and word[inter_val.size()] == grid[i-1][j-1])
+			dfs(i-1, j-1, word, inter_val);
+		if (i < grid.size() -1 and j < grid[0].size() -1 and word[inter_val.size()] == grid[i+1][j+1])
+			dfs(i+1, j+1, word, inter_val);
+		if (i > 0 and j < grid[0].size() -1 and word[inter_val.size()] == grid[i-1][j+1])
+			dfs(i-1, j+1, word, inter_val);
+		if (i < grid.size() -1 and j > 0 and word[inter_val.size()] == grid[i+1][j-1])
+			dfs(i+1, j-1, word, inter_val);
+	}
+}
+ 
+void init() {
+	vector<char> tmp;
+	tmp.push_back('a');
+	tmp.push_back('b');
+	tmp.push_back('c');
+	tmp.push_back('d');
+	grid.push_back(tmp);
+	tmp.clear();
+ 
+	tmp.push_back('e');
+	tmp.push_back('f');
+	tmp.push_back('e');
+	tmp.push_back('h');
+	grid.push_back(tmp);
+	tmp.clear();
+ 
+	tmp.push_back('i');
+	tmp.push_back('j');
+	tmp.push_back('j');
+	tmp.push_back('e');
+	grid.push_back(tmp);
+	tmp.clear();
+ 
+	tmp.push_back('m');
+	tmp.push_back('n');
+	tmp.push_back('o');
+	tmp.push_back('j');
+	grid.push_back(tmp);
+}
+
+
+Epic 25 Maximum Subarray
+
+
+
+本题题目要求如下：
+
+/* Description: Find the largest sum contiguous sub array. 
+ * The length of the returned sub array must be at least of length 2. */
+本题跟leetcode上的一道题基本一样。。。个人认为这题还是有一点难度的。。。方法用的是dp。。
+代码如下：
+
+# include <iostream>
+# include <utility>
+# include <climits>
+# include <algorithm>
+ 
+using namespace std;
+ 
+pair<int, int> max_subarr(int[], int);
+ 
+int main(int argc, char** argv) {
+ 
+	int arr[] = {-1, -1, 0, 6, -10 };
+	int n = sizeof arr / sizeof arr[0];
+ 
+	pair<int, int> res = max_subarr(arr, n);
+	cout << res.first << " - " << res.second << endl;
+ 
+	return 0;
+}
+ 
+pair<int, int> max_subarr(int arr[], int n) {
+	if (n <= 1)
+		return pair<int, int>(-1, -1);
+	int end = 0;
+	int local_max = arr[0];
+	int sum = arr[0];
+	for (int i = 1; i < n; ++i) {
+		if (local_max + arr[i] >= sum) {
+			sum = local_max + arr[i];
+			end = i;
+		}
+		local_max = max(local_max + arr[i], arr[i]);
+	}
+ 
+	int start = end;
+	int tmp = arr[start];
+	do {
+		tmp += arr[--start];
+	} while (sum != tmp);
+ 
+	return pair<int, int>(start, end);
+}
+
+local_max这个变量用来存储以i为终点的subarray的和的最大值，
+而sum表示从i = 0到现在的iteration之间最大的subarray的值..
+
+通过第一次迭代，可以求得这个subarray的和以及终点。。
+
+然后通过第二次迭代求起点。。。
+
+这题比较重要！！！！
+
+
+Epic 26 Subtraction of two Arrays
+
+
+
+题目如下：
+
+/* Description: Suppose you want to do the subtraction of two numbers. 
+ * Each digit of the numbers is divided and put in an array. Like A=[1,2, 3, 4, 5],
+ * B=[4, 5, 3, 5]. You should output an array C=[7, 8, 1, 0].
+ * Remember that your machine can’t hand numbers larger than 20. */
+我是将所有array全转成vector再进行操作。。
+代码如下：
+
+# include <iostream>
+# include <vector>
+ 
+using namespace std;
+ 
+vector<int> sub(vector<int>, vector<int>);
+ 
+int main(int argc, char** argv) {
+ 
+	int A[] = {1, 2, 3, 4, 5};
+	int B[] = {4, 5, 3, 5};
+ 
+	vector<int> A_tmp(A, A + sizeof A / sizeof A[0]);
+	vector<int> B_tmp(B, B + sizeof B / sizeof B[0]);
+ 
+	vector<int> C = sub(A_tmp, B_tmp); 
+ 
+	for (int i = 0; i < C.size(); ++i)
+		cout << C[i] << " ";
+	cout << endl;
+ 
+	return 0;
+}
+ 
+vector<int> sub(vector<int> A_tmp, vector<int> B_tmp) {
+	int i = 0;
+	int A_n = 0;
+	
+	while (i < A_tmp.size()) {
+		A_n = 10 * A_n + A_tmp[i];
+		++i;
+	}
+	i = 0;
+	int B_n = 0;
+	while (i < B_tmp.size()) {
+		B_n = 10 * B_n + B_tmp[i];
+		++i;
+	}
+	int C_n = A_n - B_n;
+	vector<int> C;
+	while (C_n != 0) {
+		C.insert(C.begin(), C_n % 10);
+		C_n /= 10;
+	}
+	return C;
+}
+
+Epic 27 Additive Number
+
+
+
+题目如下：
+
+/* Description: An additive sequence is 1,2,3,5,8,13 where T(n) = T(n -1) + T(n - 2). 
+ * A number range is given to you. Find the additive sequence number in that range.
+ * Given the start and an ending integer as userinput, generate all integers with 
+ * the following property. */
+本题算是Epic的常考题了。。。基本思路就是brute-force:
+外层循环：选定一个num1和num2.。num1从0开始到i，num1从i开始到j，
+
+然后进入内层循环：看是不是num1+num2就等于剩下的部分，（循环条件：num1 + num2 <= 剩余部分）
+
+(1)如果等于。则返回true
+
+(2)不等于num1 + num2 = num3，检测rest里面，以rest开始为起点，num.length()为长度，的字符串是不是等于num3，
+
+(2-1)，如果等于：num1 = num2, num2 = num3，rest重新取
+
+(2-2)不等于，跳出
+
+代码如下：
+
+# include <iostream>
+# include <string>
+# include <vector>
+ 
+using namespace std;
+ 
+bool additive(string);
+ 
+int main(int argc, char** argv) {
+ 
+	int start = 112;
+	int end = 1123;
+	vector<int> res;
+	for (int i = start; i <= end; ++i) {
+		if (additive(to_string(i)))
+			res.push_back(i);
+	}
+ 
+	for (int i = 0; i < res.size(); ++i)
+		cout << res[i] << endl;
+ 
+	return 0;
+}
+ 
+bool additive(string num) {
+	for (int i = 1; i < num.length(); ++i) {
+		for (int j = i + 1; j < num.length(); ++j) {
+			int num1 = stoi(num.substr(0, i));
+			int num2 = stoi(num.substr(i, j - i));
+			int index = j;
+			int rest = stoi(num.substr(index, num.length() - index));
+			while (num1 + num2 <= rest) {
+				if (num1 + num2 == rest)
+					return true;
+				int num3 = num1 + num2;
+				string s_3 = to_string(num3);
+				int len_3 = s_3.length();
+				if (s_3 == num.substr(index, s_3.length())) {
+					num1 = num2;
+					num2 = num3;
+					index = index + s_3.length();
+					rest = stoi(num.substr(index, num.length() - index));
+				}
+				else
+					break;
+			}
+		}
+	}
+	return false;
+}
+
+Epic 28 Find Max/Min Number
+
+
+
+题目要求如下：
+
+/* Description: Take a series of integers as input till a zero is entered. 
+ * Among these given integers, find the maximum of the odd numbers and the 
+ * minimum of the even integers (not including zero) and print them. */
+这题我觉得比较简单，就设定两个变量存储最小偶数和最大奇数就行了。。。
+代码如下：
+
+# include <iostream>
+# include <vector>
+# include <climits>
+ 
+using namespace std;
+ 
+int main(int argc, char** argv) {
+ 
+	int max_odd = INT_MIN;
+	int min_even = INT_MAX;
+ 
+	int num;
+	while (cin >> num) {
+		if (num == 0)
+			break;
+		else if (num % 2 == 1) {
+			max_odd = max(max_odd, num);
+		}
+		else {
+			min_even = min(min_even, num);
+		}
+	}
+	cout << "MAX: " << max_odd << endl;
+	cout << "MIN: " << min_even << endl; 
+ 
+	return 0;
+}
+
+Epic 29 Edge Detection
+
+
+
+题目如下：
+
+/* Description: Two-dimensional array representation of an image can also be represented 
+ * by a one-dimensional array of W*H size, where W represent row and H represent column 
+ * size and each cell represent pixel value of that image. you are also given a threshold X. 
+ * For edge detection, you have to compute difference of a pixel value with each of 
+ * it's adjacent pixel and find maximum of all differences. And finally compare if 
+ * that maximum difference is greater than threshold X. if so, then that pixel is 
+ * a edge pixel and have to display it. */
+不知道这道题我有没有理解正确。。。
+我的理解是假如一个矩阵是
+
+1 2 3
+
+4 9 5
+
+6 7 8
+
+假定threshold是5，则检测到2时。。。最大差距为7，大于threshold，返回2所在的点
+
+检测到4所在的点。。最大差距为5，大于等于threshold，返回4所在的点
+
+检测到9所在的点。。最大差距为7，大于threshold，返回9所在的点。。。
+
+因为是面经，不是真题。。所以题意感觉有点模糊。。。
+
+代码如下：
+
+# include <iostream>
+# include <vector>
+# include <cmath>
+ 
+using namespace std;
+ 
+void edge_detect(vector<int>, int, int, int);
+ 
+int main(int argc, char** argv) {
+ 
+	int arr[] = {1,2,3,4,9,5,6,7,8};
+	vector<int> input(arr, arr + sizeof arr / sizeof arr[0]);
+	edge_detect(input, 3, 3, 5);
+	return 0;
+}
+ 
+void edge_detect(vector<int> input, int W, int H, int T) {
+	for (int i = 0; i < H; ++i) {
+		for (int j = 0; j < W; ++j) {
+			int diff = 0;
+			int index = W * i + j;
+			/* left */
+			if (j > 0)
+				diff = max(diff, abs(input[index] - input[i * W + j - 1]));
+			/* right */
+			if (j < W - 1)
+				diff = max(diff, abs(input[index] - input[i * W + j + 1]));
+			/* up */
+			if (i > 0)
+				diff = max(diff, abs(input[index] - input[(i - 1) * W + j]));
+			/* down */
+			if (i < H - 1)
+				diff = max(diff, abs(input[index] - input[(i + 1) * W + j]));
+			if (diff >= T)
+				cout << "Edge: " << index << endl;
+		}
+	}
+
+————————————————
+版权声明：本文为CSDN博主「lym1108csu」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/u012290414/article/details/44037185
