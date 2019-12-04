@@ -1,7 +1,5 @@
 def permute(string):
-    l, r, res = 0, len(string) - 1, []
-
-    return _permute(list(string), l, r, res)
+    return _permute(list(string), 0, len(string) - 1, [])
 
 
 def _permute(a, l, r, res):
@@ -21,4 +19,4 @@ def _to_string(list_):
     return ''.join(list_)
 
 
-print(permute('123'))
+print(permute('ABC'))
