@@ -10,8 +10,8 @@ def permute(string):
         rest = string[:i] + string[i + 1:]
 
         perms = permute(rest)
-        for x in perms:
-            res.append(first + x)
+        for perm in perms:
+            res.append(first + perm)
 
     return res
 
