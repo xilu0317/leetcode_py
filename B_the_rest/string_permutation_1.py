@@ -19,4 +19,4 @@ def _to_string(list_):
     return ''.join(list_)
 
 
-print(permute('ABC'))
+print(permute('123'))
