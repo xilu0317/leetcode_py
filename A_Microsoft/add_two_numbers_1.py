@@ -1,7 +1,7 @@
 class Solution:
     def add_two_numbers(self, l1, l2):
         cur1, cur2 = l1, l2
-        cur = dummy = ListNode(0)
+        cur = dummy = ListNode(-1)
         sum_ = 0
 
         while cur1 or cur2:
