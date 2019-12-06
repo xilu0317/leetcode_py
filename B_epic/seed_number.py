@@ -11,7 +11,7 @@
 def get_product(n):
     prod = 1
     while n > 1:
-        prod *= (n % 10)
+        prod *= n % 10
         n = n // 10
 
     return prod
@@ -19,7 +19,7 @@ def get_product(n):
 
 def get_seed(num):
     res = []
-    for i in range(num // 2 + 1):
+    for i in range(num // 2):
         if i * get_product(i) == num:
             res.append(i)
 
