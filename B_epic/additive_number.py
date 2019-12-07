@@ -16,20 +16,20 @@ class Solution(object):
 
                 num1 = num[:i]
                 num2 = num[i:j]
-                remain = num[j:]
+                rest = num[j:]
 
-                if self.is_valid(num1, num2, remain):
+                if self.is_valid(num1, num2, rest):
                     return True
 
         return False
 
-    def is_valid(self, num1, num2, remain):
-        if remain == '':
+    def is_valid(self, num1, num2, rest):
+        if rest == '':
             return True
 
         sum_ = str(int(num1) + int(num2))
 
-        if remain.startswith(sum_):
-            return self.is_valid(num2, sum_, remain[len(sum_):])
+        if rest.startswith(sum_):
+            return self.is_valid(num2, sum_, rest[len(sum_):])
         else:
             return False
