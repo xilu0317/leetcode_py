@@ -1,0 +1,614 @@
+**************************************************************************************
+**
+**
+**           Microsofot Top questoins within 1 year with descending popularity
+**
+**
+**************************************************************************************
+
+151
+Reverse Words in a String
+138
+Copy List with Random Pointer
+146
+LRU Cache
+103
+Binary Tree Zigzag Level Order Traversal
+165
+Compare Version Numbers
+1
+Two Sum
+348
+Design Tic-Tac-Toe
+88
+Merge Sorted Array
+253
+Meeting Rooms II
+445
+Add Two Numbers II
+54
+Spiral Matrix
+794
+Valid Tic-Tac-Toe State
+722
+Remove Comments
+200
+Number of Islands
+285
+Inorder Successor in BST
+564
+Find the Closest Palindrome
+297
+Serialize and Deserialize Binary Tree
+42
+Trapping Rain Water
+443
+String Compression
+186
+Reverse Words in a String II
+5
+Longest Palindromic Substring
+402
+Remove K Digits
+240
+Search a 2D Matrix II
+53
+Maximum Subarray
+428
+Serialize and Deserialize N-ary Tree
+2
+Add Two Numbers
+79
+Word Search
+22
+Generate Parentheses
+10
+Regular Expression Matching
+121
+Best Time to Buy and Sell Stock
+23
+Merge k Sorted Lists
+295
+Find Median from Data Stream
+75
+Sort Colors
+48
+Rotate Image
+8
+String to Integer (atoi)
+545
+Boundary of Binary Tree
+636
+Exclusive Time of Functions
+21
+Merge Two Sorted Lists
+33
+Search in Rotated Sorted Array
+706
+Design HashMap
+98
+Validate Binary Search Tree
+36
+Valid Sudoku
+224
+Basic Calculator
+206
+Reverse Linked List
+273
+Integer to English Words
+236
+Lowest Common Ancestor of a Binary Tree
+568
+Maximum Vacation Days
+25
+Reverse Nodes in k-Group
+557
+Reverse Words in a String III
+805
+Split Array With Same Average
+529
+Minesweeper
+24
+Swap Nodes in Pairs
+17
+Letter Combinations of a Phone Number
+20
+Valid Parentheses
+419
+Battleships in a Board
+322
+Coin Change
+93
+Restore IP Addresses
+450
+Delete Node in a BST
+362
+Design Hit Counter
+287
+Find the Duplicate Number
+114
+Flatten Binary Tree to Linked List
+3
+Longest Substring Without Repeating Characters
+692
+Top K Frequent Words
+123
+Best Time to Buy and Sell Stock III
+143
+Reorder List
+239
+Sliding Window Maximum
+560
+Subarray Sum Equals K
+44
+Wildcard Matching
+94
+Binary Tree Inorder Traversal
+31
+Next Permutation
+141
+Linked List Cycle
+116
+Populating Next Right Pointers in Each Node
+917
+Reverse Only Letters
+155
+Min Stack
+4
+Median of Two Sorted Arrays
+679
+24 Game
+102
+Binary Tree Level Order Traversal
+71
+Simplify Path
+218
+The Skyline Problem
+168
+Excel Sheet Column Title
+43
+Multiply Strings
+13
+Roman to Integer
+232
+Implement Queue using Stacks
+72
+Edit Distance
+417
+Pacific Atlantic Water Flow
+30
+Substring with Concatenation of All Words
+76
+Minimum Window Substring
+380
+Insert Delete GetRandom O(1)
+160
+Intersection of Two Linked Lists
+234
+Palindrome Linked List
+493
+Reverse Pairs
+344
+Reverse String
+227
+Basic Calculator II
+85
+Maximal Rectangle
+415
+Add Strings
+346
+Moving Average from Data Stream
+407
+Trapping Rain Water II
+935
+Knight Dialer
+173
+Binary Search Tree Iterator
+229
+Majority Element II
+269
+Alien Dictionary
+535
+Encode and Decode TinyURL
+772
+Basic Calculator III
+15
+3Sum
+708
+Insert into a Cyclic Sorted List
+612
+Shortest Distance in a Plane
+238
+Product of Array Except Self
+694
+Number of Distinct Islands
+73
+Set Matrix Zeroes
+490
+The Maze
+652
+Find Duplicate Subtrees
+347
+Top K Frequent Elements
+333
+Largest BST Subtree
+105
+Construct Binary Tree from Preorder and Inorder Traversal
+41
+First Missing Positive
+59
+Spiral Matrix II
+51
+N-Queens
+74
+Search a 2D Matrix
+836
+Rectangle Overlap
+449
+Serialize and Deserialize BST
+97
+Interleaving String
+110
+Balanced Binary Tree
+39
+Combination Sum
+354
+Russian Doll Envelopes
+528
+Random Pick with Weight
+153
+Find Minimum in Rotated Sorted Array
+49
+Group Anagrams
+768
+Max Chunks To Make Sorted II
+210
+Course Schedule II
+300
+Longest Increasing Subsequence
+117
+Populating Next Right Pointers in Each Node II
+150
+Evaluate Reverse Polish Notation
+214
+Shortest Palindrome
+19
+Remove Nth Node From End of List
+37
+Sudoku Solver
+242
+Valid Anagram
+958
+Check Completeness of a Binary Tree
+225
+Implement Stack using Queues
+516
+Longest Palindromic Subsequence
+61
+Rotate List
+204
+Count Primes
+235
+Lowest Common Ancestor of a Binary Search Tree
+642
+Design Search Autocomplete System
+688
+Knight Probability in Chessboard
+503
+Next Greater Element II
+92
+Reverse Linked List II
+139
+Word Break
+523
+Continuous Subarray Sum
+12
+Integer to Roman
+28
+Implement strStr()
+632
+Smallest Range Covering Elements from K Lists
+56
+Merge Intervals
+286
+Walls and Gates
+662
+Maximum Width of Binary Tree
+412
+Fizz Buzz
+460
+LFU Cache
+215
+Kth Largest Element in an Array
+99
+Recover Binary Search Tree
+68
+Text Justification
+109
+Convert Sorted List to Binary Search Tree
+378
+Kth Smallest Element in a Sorted Matrix
+397
+Integer Replacement
+46
+Permutations
+277
+Find the Celebrity
+784
+Letter Case Permutation
+55
+Jump Game
+133
+Clone Graph
+162
+Find Peak Element
+57
+Insert Interval
+91
+Decode Ways
+759
+Employee Free Time
+26
+Remove Duplicates from Sorted Array
+230
+Kth Smallest Element in a BST
+283
+Move Zeroes
+212
+Word Search II
+148
+Sort List
+289
+Game of Life
+426
+Convert Binary Search Tree to Sorted Doubly Linked List
+171
+Excel Sheet Column Number
+647
+Palindromic Substrings
+64
+Minimum Path Sum
+128
+Longest Consecutive Sequence
+266
+Palindrome Permutation
+328
+Odd Even Linked List
+669
+Trim a Binary Search Tree
+384
+Shuffle an Array
+70
+Climbing Stairs
+118
+Pascal's Triangle
+979
+Distribute Coins in Binary Tree
+208
+Implement Trie (Prefix Tree)
+125
+Valid Palindrome
+316
+Remove Duplicate Letters
+174
+Dungeon Game
+40
+Combination Sum II
+167
+Two Sum II - Input array is sorted
+442
+Find All Duplicates in an Array
+939
+Minimum Area Rectangle
+86
+Partition List
+317
+Shortest Distance from All Buildings
+140
+Word Break II
+724
+Find Pivot Index
+332
+Reconstruct Itinerary
+199
+Binary Tree Right Side View
+78
+Subsets
+459
+Repeated Substring Pattern
+172
+Factorial Trailing Zeroes
+81
+Search in Rotated Sorted Array II
+394
+Decode String
+373
+Find K Pairs with Smallest Sums
+515
+Find Largest Value in Each Tree Row
+611
+Valid Triangle Number
+159
+Longest Substring with At Most Two Distinct Characters
+416
+Partition Equal Subset Sum
+658
+Find K Closest Elements
+29
+Divide Two Integers
+84
+Largest Rectangle in Histogram
+671
+Second Minimum Node In a Binary Tree
+622
+Design Circular Queue
+209
+Minimum Size Subarray Sum
+77
+Combinations
+787
+Cheapest Flights Within K Stops
+11
+Container With Most Water
+124
+Binary Tree Maximum Path Sum
+621
+Task Scheduler
+158
+Read N Characters Given Read4 II - Call multiple times
+83
+Remove Duplicates from Sorted List
+270
+Closest Binary Search Tree Value
+147
+Insertion Sort List
+237
+Delete Node in a Linked List
+767
+Reorganize String
+698
+Partition to K Equal Sum Subsets
+220
+Contains Duplicate III
+108
+Convert Sorted Array to Binary Search Tree
+733
+Flood Fill
+819
+Most Common Word
+45
+Jump Game II
+716
+Max Stack
+107
+Binary Tree Level Order Traversal II
+796
+Rotate String
+149
+Max Points on a Line
+7
+Reverse Integer
+383
+Ransom Note
+406
+Queue Reconstruction by Height
+189
+Rotate Array
+69
+Sqrt(x)
+572
+Subtree of Another Tree
+430
+Flatten a Multilevel Doubly Linked List
+142
+Linked List Cycle II
+63
+Unique Paths II
+32
+Longest Valid Parentheses
+863
+All Nodes Distance K in Binary Tree
+216
+Combination Sum III
+905
+Sort Array By Parity
+518
+Coin Change 2
+414
+Third Maximum Number
+60
+Permutation Sequence
+176
+Second Highest Salary
+122
+Best Time to Buy and Sell Stock II
+494
+Target Sum
+329
+Longest Increasing Path in a Matrix
+65
+Valid Number
+367
+Valid Perfect Square
+38
+Count and Say
+179
+Largest Number
+126
+Word Ladder II
+543
+Diameter of Binary Tree
+349
+Intersection of Two Arrays
+211
+Add and Search Word - Data structure design
+127
+Word Ladder
+134
+Gas Station
+304
+Range Sum Query 2D - Immutable
+129
+Sum Root to Leaf Numbers
+106
+Construct Binary Tree from Inorder and Postorder Traversal
+977
+Squares of a Sorted Array
+112
+Path Sum
+290
+Word Pattern
+231
+Power of Two
+704
+Binary Search
+973
+K Closest Points to Origin
+547
+Friend Circles
+852
+Peak Index in a Mountain Array
+90
+Subsets II
+739
+Daily Temperatures
+876
+Middle of the Linked List
+448
+Find All Numbers Disappeared in an Array
+18
+4Sum
+191
+Number of 1 Bits
+101
+Symmetric Tree
+202
+Happy Number
+152
+Maximum Product Subarray
+509
+Fibonacci Number
+6
+ZigZag Conversion
+67
+Add Binary
+350
+Intersection of Two Arrays II
+938
+Range Sum of BST
+268
+Missing Number
+50
+Pow(x, n)
+62
+Unique Paths
+387
+First Unique Character in a String
+198
+House Robber
+136
+Single Number
+14
+Longest Common Prefix
+9
+Palindrome Number

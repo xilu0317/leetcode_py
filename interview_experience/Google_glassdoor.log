@@ -1,0 +1,59 @@
+Job title: Google-Front-End-Software-Engineer
+Pittsburgh, PA (US)
+i won't say specifics, but it was on tree and graph traversal
+
+New York, NY (US)
+check if matrix is word square (check [i][j] === [j][i])
+
+Mountain View, CA (US)
+how do you make a function that only calls input function f every 50 milliseconds?
+
+Irvine, CA (US)
+dfs on html nodes
+
+Mountain View, CA (US)
+how do you make a function that takes f and returns a function that calls f on a timeout?
+
+Mountain View, CA (US)
+describe what happens when a user clicks a link in a browser.
+
+Los Angeles, CA (US)
+minesweeper problem. write a function reveal() that outputs the number of tiles shown when a user clicks on a tile. each tile shows the number of bombs as its neighbor. if the user click on a tile that is a bomb, the game is over. if that tile is 0, reveal all its neighbors.
+
+Sunnyvale, CA (US)
+can not disclose specific questions, but they are your basic technical coding questions. some are more applicable to the position than others, but all are relevant to software engineering.
+
+Sunnyvale, CA (US)
+binary search tree
+
+Sunnyvale, CA (US)
+js es6 related questions
+
+Sunnyvale, CA (US)
+you are given four numbers (type int), and have four basic math operators at your disposal (+, -, x, /). given arbitrary ways to group the numbers and using any of the operators, determine if you can make the number 24 from the four numbers. the numbers must be processed in the order they appear.
+
+Job title: Google-Front-End-Engineer
+Seattle, WA (US)
+a coding question emphasizing algorithms
+
+Mountain View, CA (US)
+what all happens in a browser when you click on a link?
+
+Mountain View, CA (US)
+analyze this javascript function and describe what it's doing, step by step
+
+Mountain View, CA (US)
+in the following jquery function what is the algorithm doing
+
+Mountain View, CA (US)
+demonstrate a basic use of gwt
+
+New York, NY (US)
+write a calender system which can show scheduled meetings (from - to) and attendees. sort the meetings according to some rules (ex: starting time in ascending order). find out how many meetings are overlapped.
+
+New York, NY (US)
+dom manipulation using vanilla js.
+
+New York, NY (US)
+i'm not supposed to say and they wouldn't be the same anyway. but count on them being leetcode you'll rarely use in practice just like most big companies will ask.
+
