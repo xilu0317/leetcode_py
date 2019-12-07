@@ -1,6 +1,6 @@
 class Solution(object):
     # KEY: find the first two sequence and then check the remaining
-    def isAdditiveNumber(self, num):
+    def is_additive_number(self, num):
         n = len(num)
         for i in range(1, n // 2 + 1):
             if num[0] == '0' and i >= 2:
