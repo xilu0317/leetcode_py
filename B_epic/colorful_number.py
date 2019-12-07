@@ -1,6 +1,5 @@
 def colorful_num(num):
-    num_str = str(num)
-    s = set()
+    num_str, s = str(num), set()
     for i in range(len(num_str)):
         for j in range(len(num_str)):
             if i < j + 1:
@@ -21,4 +20,4 @@ def prod(nums):
     return prd
 
 
-print(colorful_num(3245))
+print(colorful_num(263))
