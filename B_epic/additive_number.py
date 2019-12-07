@@ -1,16 +1,20 @@
 class Solution(object):
+    # KEY: find the first two sequence and then check the remaining
     def isAdditiveNumber(self, num):
-        # Idea: find the first 2 strings and then continue to check the remaining strings
         n = len(num)
-        # 1st number is num[0:i], 2nd number is num[i:j]
         for i in range(1, n // 2 + 1):
             if num[0] == '0' and i >= 2:
-                break
+                return False
 
             for j in range(i + 1, min(n - i, (n + i) // 2) + 1):
                 if num[i] == '0' and j - i >= 2:
-                    break  # means starting with "0", e.g., "03"
-                num1 = num[0:i]
+                    '''
+                        If the current sequence starts with 0, then no need to consider the sequence further.
+                        But the string could still be valid (as trailing 0) so don't return false
+                    '''
+                    break
+
+                num1 = num[:i]
                 num2 = num[i:j]
                 remain = num[j:]
 
@@ -20,12 +24,12 @@ class Solution(object):
         return False
 
     def is_valid(self, num1, num2, remain):
-        if remain == '':    # means checked whole string
+        if remain == '':
             return True
 
-        total = str(int(num1) + int(num2))
+        sum_ = str(int(num1) + int(num2))
 
-        if remain.startswith(total):
-            return self.is_valid(num2, total, remain[len(total):])
+        if remain.startswith(sum_):
+            return self.is_valid(num2, sum_, remain[len(sum_):])
         else:
             return False
