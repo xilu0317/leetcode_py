@@ -1,5 +1,6 @@
 def colorful_num(num):
     num_str, s = str(num), set()
+
     for i in range(len(num_str)):
         for j in range(len(num_str)):
             if i < j + 1:
