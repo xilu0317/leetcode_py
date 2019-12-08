@@ -2,11 +2,11 @@ class Solution(object):
     # KEY: find the first two sequence and then check the remaining
     def is_additive_number(self, num):
         n = len(num)
-        # end index of the first number
+        # beginning index of the second number
         for i in range(1, n // 2 + 1):
             if num[0] == '0' and i >= 2:
                 return False
-            # end index of the second number
+            # beginning index of the remaining numbers
             for j in range(i + 1, min(n - i, (n + i) // 2) + 1):
                 if num[i] == '0' and j - i >= 2:
                     '''
