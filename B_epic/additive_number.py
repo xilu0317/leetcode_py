@@ -1,12 +1,14 @@
+# Note: there is *no* restriction that the first number should be shorter or smaller than the second number
 class Solution(object):
     # KEY: find the first two sequence and then check the remaining
     def is_additive_number(self, num):
         n = len(num)
-        # beginning index of the second number
+        # Exhaust all possibilities of the first two sequence
+        # 'i' is the beginning index of the second number
         for i in range(1, n // 2 + 1):
             if num[0] == '0' and i >= 2:
                 return False
-            # beginning index of the remaining numbers
+            # 'j' is the beginning index of the remaining numbers
             for j in range(i + 1, min(n - i, (n + i) // 2) + 1):
                 if num[i] == '0' and j - i >= 2:
                     '''
@@ -32,5 +34,5 @@ class Solution(object):
 
         if rest.startswith(sum_):
             return self.is_valid(num2, sum_, rest[len(sum_):])
-        else:
-            return False
+
+        return False
