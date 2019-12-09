@@ -1,3 +1,8 @@
+# num: number to be built
+# x:   current digit used to construct num
+# k:   counter to keep track of length of num
+
+
 def print_well_ordered(num, x, k):
     if (k == 0):
         print(num)
