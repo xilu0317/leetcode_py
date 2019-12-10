@@ -1,5 +1,6 @@
 class Solution:
-    def combinationSum(self, candidates, target):
+    # standard backtracking
+    def combination_sum(self, candidates, target):
         res = []
         self.dfs(candidates, target, 0, [], res)
 
@@ -16,9 +17,10 @@ class Solution:
         for i in range(index, len(nums)):
             self.dfs(nums, target - nums[i], i, path + [nums[i]], res)
 
-# faster
+
 class Solution:
-    def combinationSum(self, candidates, target):
+    # faster
+    def combination_sum(self, candidates, target):
         result = []
         candidates = sorted(candidates)
 
