@@ -1,4 +1,4 @@
-class Solution:
+class Solution1:
     # standard backtracking
     def combination_sum(self, candidates, target):
         res = []
@@ -18,26 +18,49 @@ class Solution:
             self.dfs(nums, target - nums[i], i, path + [nums[i]], res)
 
 
-class Solution:
+class Solution2:
     # faster
     def combination_sum(self, candidates, target):
-        res = []
-        candidates = sorted(candidates)
-
-        def dfs(remain, arr):
-            if remain == 0:
+        # note the dfs 'target' here is different than the target in combination_sum
+        def dfs(target, arr):
+            if target == 0:
                 res.append(arr)
                 return
 
             for x in candidates:
-                if x > remain:
+                if x > target:
                     break
 
                 if arr and x < arr[-1]:  # '-1' means last element in the array
                     continue
                 else:
-                    dfs(remain - x, arr + [x])
+                    dfs(target - x, arr + [x])
+        # --------------------------------------
 
+        res = []
+        candidates = sorted(candidates)
         dfs(target, [])
 
         return res
+
+
+class Solution3:
+    def combination_sum(self, candidates, target):
+        res = []
+        self.dfs(target, [], sorted(candidates), res)
+
+        return res
+
+    def dfs(self, target, arr, candidates, res):
+        if target == 0:
+            res.append(arr)
+            return
+
+        for x in candidates:
+            if x > target:
+                break
+
+            if arr and x < arr[-1]:
+                continue
+            else:
+                self.dfs(target - x, arr + [x], candidates, res)
