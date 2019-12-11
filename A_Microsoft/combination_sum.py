@@ -21,22 +21,23 @@ class Solution:
 class Solution:
     # faster
     def combination_sum(self, candidates, target):
-        result = []
+        res = []
         candidates = sorted(candidates)
 
-        def dfs(remain, stack):
+        def dfs(remain, arr):
             if remain == 0:
-                result.append(stack)
+                res.append(arr)
                 return
 
-            for item in candidates:
-                if item > remain:
+            for x in candidates:
+                if x > remain:
                     break
-                if stack and item < stack[-1]:
+
+                if arr and x < arr[-1]:  # '-1' means last element in the array
                     continue
                 else:
-                    dfs(remain - item, stack + [item])
+                    dfs(remain - x, arr + [x])
 
         dfs(target, [])
 
-        return result
+        return res
