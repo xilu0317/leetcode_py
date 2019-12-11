@@ -17,10 +17,11 @@ class LRUCache:
 
     def get(self, key):
         if key in self.dic:
-            n = self.dic[key]
-            self._remove(n)
-            self._add(n)
-            return n.val
+            node = self.dic[key]
+            self._remove(node)
+            self._add(node)
+
+            return node.val
 
         return -1
 
@@ -28,14 +29,14 @@ class LRUCache:
         if key in self.dic:
             self._remove(self.dic[key])
 
-        n = Node(key, value)
-        self._add(n)
-        self.dic[key] = n
+        node = Node(key, value)
+        self._add(node)
+        self.dic[key] = node
 
         if len(self.dic) > self.capacity:
-            n = self.head.next
-            self._remove(n)
-            del self.dic[n.key]
+            node = self.head.next
+            self._remove(node)
+            del self.dic[node.key]
 
     def _remove(self, node):
         p = node.prev
