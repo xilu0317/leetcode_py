@@ -1,4 +1,4 @@
-class Solution(object):
+class Solution:
     def is_valid_BST(self, root, MIN=float('inf'), MAX=float('-inf')):
         if not root:
             return True

@@ -1,5 +1,5 @@
 # Note: there is *no* restriction that the first number should be shorter or smaller than the second number
-class Solution(object):
+class Solution:
     # KEY: find the first two sequence and then check the remaining
     def is_additive_number(self, num):
         n = len(num)

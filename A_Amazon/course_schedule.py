@@ -1,4 +1,4 @@
-class Solution(object):
+class Solution:
     def can_finish(self, numCourses, prerequisites):
         # list comprehension
         graph = [[] for _ in range(numCourses)]

@@ -2,7 +2,7 @@ import collections
 # TODO: revisit
 
 
-class Solution(object):
+class Solution:
     def merge_trees(self, t1, t2):
         if not (t1 and t2):
             return t1 or t2
