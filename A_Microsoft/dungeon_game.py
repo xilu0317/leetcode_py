@@ -1,4 +1,5 @@
 class Solution:
+    # dp[i][j] = minimal HP needed at grid (i, j)
     def calculate_minimum_HP(self, dungeon):
         MAX = float('inf')
 
