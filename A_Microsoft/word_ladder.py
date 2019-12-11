@@ -1,22 +1,22 @@
 from collections import deque
 
 
-class Solution(object):
+class Solution:
     def ladder_length(self, begin_word, end_word, word_list):
         word_set = set(word_list)
         alphabet = [chr(x) for x in range(ord('a'), ord('z') + 1)]
 
         q = deque([(begin_word, 1)])
         while q:
-            word, length = q.popleft()
-            if word == end_word:
-                return length
+            cur_word, level = q.popleft()
+            if cur_word == end_word:
+                return level
 
-            for i in range(len(word)):
+            for i in range(len(cur_word)):
                 for c in alphabet:
-                    next_word = word[:i] + c + word[i + 1:]
+                    next_word = cur_word[:i] + c + cur_word[i + 1:]
                     if next_word in word_set:
                         word_set.remove(next_word)
-                        q.append((next_word, length + 1))
+                        q.append((next_word, level + 1))
 
         return 0
