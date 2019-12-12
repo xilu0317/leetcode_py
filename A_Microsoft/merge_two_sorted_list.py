@@ -7,6 +7,7 @@ class Solution:
 
         cur = dummy = ListNode(-1)
         cur1, cur2 = l1, l2
+
         while cur1 and cur2:
             if cur1.val < cur2.val:
                 cur.next = cur1
