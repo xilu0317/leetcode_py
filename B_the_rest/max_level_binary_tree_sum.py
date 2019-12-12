@@ -1,7 +1,7 @@
 # TODO: bug
 class Solution:
     def maxLevelSum(self, root):
-        if not root:
+        if root is None:
             None
 
         q, min_, level, min_level = [root], float('inf'), 0, float('inf')

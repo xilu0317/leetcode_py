@@ -24,14 +24,16 @@ class Solution:
 
         return t1
 
-    def merge_trees_2(self, t1, t2):
-        if not t1 and not t2:
+
+class Solution:
+    def merge_trees(self, t1, t2):
+        if t1 is None and t2 is None:
             return None
 
         res = TreeNode((t1.val if t1 else 0) + (t2.val if t2 else 0))
 
-        res.left = self.merge_trees_2(t1 and t1.left, t2 and t2.left)
-        res.right = self.merge_trees_2(t1 and t1.right, t2 and t2.right)
+        res.left = self.merge_trees(t1 and t1.left, t2 and t2.left)
+        res.right = self.merge_trees(t1 and t1.right, t2 and t2.right)
 
         return res
 

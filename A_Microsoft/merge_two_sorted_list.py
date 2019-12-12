@@ -1,8 +1,8 @@
 class Solution:
     def merge_two_lists(self, l1, l2):
-        if not l1:
+        if l1 is None:
             return l2
-        if not l2:
+        if l2 is None:
             return l1
 
         cur = dummy = ListNode(-1)

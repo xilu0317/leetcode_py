@@ -1,6 +1,6 @@
 class Solution:
     def merge(self, intervals):
-        if not len(intervals):
+        if not intervals:
             return None
 
         intervals = sorted(intervals, key=lambda x: x[0])
