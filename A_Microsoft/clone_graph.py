@@ -2,34 +2,35 @@ from collections import deque
 
 
 class Solution:
-    def clone_graph(self, node):
+    def cloneGraph(self, root):
         dic = {}
 
         # 1st BFS: create node-to-node mapping
-        q = deque([node])
-        while len(q):
-            n = q.popleft()
-            dic[n] = Node(n.val, [])
+        q = deque([root])
+        while q:
+            node = q.popleft()
+            dic[node] = Node(node.val, [])
 
-            for nb in n.neighbors:
+            for nb in node.neighbors:
                 if nb not in dic:
                     q.append(nb)
 
         # 2nd BFS: associate nodes
-        q = deque([node])
+        q = deque([root])
         s = set()
-        while len(q):
-            n = q.popleft()
+        while q:
+            node = q.popleft()
 
-            if (n not in s):
-                s.add(n)
+            if node not in s:
+                s.add(node)
 
-                for nb in n.neighbors:
+                for nb in node.neighbors:
                     if nb not in s:
                         q.append(nb)
-                    dic[n].neighbors.append(dic[nb])
+                    # associate nodes
+                    dic[node].neighbors.append(dic[nb])
 
-        return dic[node]
+        return dic[root]
 
 
 class Node:
