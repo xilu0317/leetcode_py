@@ -6,5 +6,4 @@ class Solution:
         arr = s.split()
         arr.reverse()
 
-        # note the difference vs javascript
         return ' '.join(arr)
