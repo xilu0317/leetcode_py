@@ -20,15 +20,14 @@ class Solution:
 
 
 class Solution2:
-    # [BEST]
     def license_key_formatting(self, s, k):
         s = s.upper().replace('-', '')
         n = len(s)
-        s1 = k if n % k == 0 else n % k
-        res = s[:s1]
+        i = k if n % k == 0 else n % k
+        res = s[:i]
 
-        while s1 < n:
-            res += '-' + s[s1:s1 + k]
-            s1 += k
+        while i < n:
+            res += '-' + s[i:i + k]
+            i += k
 
         return res
