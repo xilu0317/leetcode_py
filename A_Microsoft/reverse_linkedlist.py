@@ -1,7 +1,7 @@
 class Solution:
     # recursive
     def reverse_list(self, head):
-        if not head or not head.next:
+        if head is None or head.next is None:
             return head
 
         new_head = self.reverse_list(head.next)

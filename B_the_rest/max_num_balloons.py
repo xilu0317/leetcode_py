@@ -1,6 +1,6 @@
 class Solution:
     def max_number_of_balloons(self, text):
-        if not text:
+        if text is None:
             return 0
 
         dic = { 'b': 0,

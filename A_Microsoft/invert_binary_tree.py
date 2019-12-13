@@ -1,6 +1,6 @@
 class Solution:
     def invert_tree(self, root):
-        if not root:
+        if root is None:
             return None
 
         # record root.right since it would be modified

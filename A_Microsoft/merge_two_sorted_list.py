@@ -1,12 +1,13 @@
 class Solution:
     def merge_two_lists(self, l1, l2):
-        if not l1:
+        if l1 is None:
             return l2
-        if not l2:
+        if l2 is None:
             return l1
 
         cur = dummy = ListNode(-1)
         cur1, cur2 = l1, l2
+
         while cur1 and cur2:
             if cur1.val < cur2.val:
                 cur.next = cur1

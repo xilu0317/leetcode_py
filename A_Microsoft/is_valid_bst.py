@@ -1,6 +1,6 @@
 class Solution:
     def is_valid_BST(self, root, MIN=float('inf'), MAX=float('-inf')):
-        if not root:
+        if root is None:
             return True
 
         if root.val <= MAX or root.val >= MIN:

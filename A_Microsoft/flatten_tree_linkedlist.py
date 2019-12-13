@@ -1,6 +1,6 @@
 class Solution:
     def flatten(self, root):
-        if not root:
+        if root is None:
             return
 
         old_left = root.left

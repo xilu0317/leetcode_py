@@ -1,12 +1,12 @@
 class Solution:
     def has_cycle(self, head):
-        if not head:
+        if head is None:
             return False
 
         slow = fast = head
 
         while True:
-            if fast.next == None or fast.next.next == None:
+            if fast.next is None or fast.next.next is None:
                 break
 
             slow = slow.next

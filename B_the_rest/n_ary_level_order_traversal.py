@@ -3,7 +3,7 @@ from collections import deque
 
 class Solution:
     def level_order(self, root):
-        if not root:
+        if root is None:
             return None
 
         q, res = deque([root]), []
