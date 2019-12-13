@@ -22,7 +22,6 @@ class Solution:
                     turns += 1
                     rows[i] += 1
                     cols[j] += 1
-                    # diag
                     if i == j:
                         diag += 1
                     if i + j == 2:
