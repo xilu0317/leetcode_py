@@ -10,20 +10,16 @@ class Solution:
         return True
 
 
-class Solution2:
+class Solution:
     def is_anagram(self, s, t):
         if len(s) != len(t):
             return False
 
         dic = {}
         for x in s:
-            if dic.get(x):
-                dic[x] += 1
-            else:
-                dic[x] = 1
+            dic[x] = dic.get(x) + 1 if dic.get(x) else 1
 
         for x in t:
-            if dic.get(x):
-                dic[x] -= 1
+            dic[x] = dic.get(x) - 1 if dic.get(x) else None
 
         return all(value == 0 for value in dic.values())
