@@ -1,5 +1,5 @@
 class Solution:
-    def isIsomorphic(self, s, t):
+    def is_isomorphic(self, s, t):
         dic1, dic2 = {}, {}
 
         for i, x in enumerate(s):
