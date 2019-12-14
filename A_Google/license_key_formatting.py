@@ -20,6 +20,7 @@ class Solution:
 
 
 class Solution2:
+    # [BEST]
     def license_key_formatting(self, s, k):
         s = s.upper().replace('-', '')
         n = len(s)
