@@ -6,8 +6,8 @@ class Solution:
         # record root.right since it would be modified
         right = root.right
 
-        root.right = self.invertTree(root.left)
-        root.left = self.invertTree(right)
+        root.right = self.invert_tree(root.left)
+        root.left = self.invert_tree(right)
 
         return root
 

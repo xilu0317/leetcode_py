@@ -1,7 +1,7 @@
 class Solution:
     def lowest_common_ancestor(self, root, p, q):
         if root is None:
-            return root
+            return None
 
         if root is p or root is q:
             return root
