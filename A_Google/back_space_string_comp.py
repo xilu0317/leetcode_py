@@ -9,7 +9,6 @@ class Solution:
                 count += 1
             elif count:
                 count -= 1
-                continue
             else:
                 res.append(x)
 
