@@ -1,3 +1,9 @@
+class Node:
+    def __init__(self):
+        self.dic = {}
+        self.is_last = False
+
+
 class Trie:
     def __init__(self):
         self.root = Node()
@@ -28,9 +34,3 @@ class Trie:
 
     def startsWith(self, prefix):
         return self._traverse(prefix)
-
-
-class Node:
-    def __init__(self):
-        self.dic = {}
-        self.is_last = False
