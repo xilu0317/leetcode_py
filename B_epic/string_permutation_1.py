@@ -5,7 +5,7 @@ def permute(string):
 def _permute(arr, l, r, res):
     if l == r:
         res.append(''.join(arr))
-        return None
+        return
 
     for i in range(l, r + 1):
         arr[l], arr[i] = arr[i], arr[l]
