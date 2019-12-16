@@ -1,6 +1,3 @@
-# // https: // leetcode.com/discuss/interview-question/373202/Amazon-or-OA-2019-or-Optimal-Utilization
-
-# (()=> {
 #     // a=[[1, 8], [2, 7], [3, 14]]
 #     // b=[[1, 5], [2, 10], [3, 14]]
 #     // target=20
