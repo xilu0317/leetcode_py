@@ -1,20 +1,25 @@
-# Input: coins = [1, 2, 5], amount = 11
-# Output: 3
-# Explanation: 11 = 5 + 5 + 1
-
-
 class Solution:
     def coin_change(self, coins, amount):
-        MAX = float('inf')
+        dp = [0] + [float('inf')] * amount
 
-        dp = [0] + [MAX] * amount
-
-        for i in range(1, amount + 1, 1):
+        for i in range(1, amount + 1):
             for j in range(len(coins)):
-                if (coins[j] <= i):
+                if coins[j] <= i:
                     dp[i] = min(dp[i], dp[i - coins[j]] + 1)
 
         return -1 if dp[amount] > amount else dp[amount]
 
 
-# need to write the greedy algorithm for this too
+class Solution:
+    # greedy: this only works for real coin nominations
+    def coin_change(self, coins, amount):
+        coins.sort()
+        count, i = 0, len(coins) - 1
+
+        while amount and i >= 0:
+            if coins[i] <= amount:
+                count += amount // coins[i]
+                amount %= coins[i]
+            i -= 1
+
+        return -1 if amount > 0 else count
