@@ -2,7 +2,7 @@ from collections import deque
 
 
 class Solution:
-    def cloneGraph(self, root):
+    def clone_graph(self, root):
         dic = {}
 
         # 1st BFS: create node-to-node mapping

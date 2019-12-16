@@ -4,7 +4,7 @@
 
 
 def _print_well_ordered(num, x, k):
-    if (k == 0):
+    if k == 0:
         print(num)
         return
 

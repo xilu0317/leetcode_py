@@ -8,7 +8,7 @@ class Solution:
         self._swap(nums, k, len_ - 1)
 
     def _swap(self, arr, i, j):
-        while (i < j):
+        while i < j:
             arr[i], arr[j] = arr[j], arr[i]
             i += 1
             j -= 1
