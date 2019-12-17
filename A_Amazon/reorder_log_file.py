@@ -15,6 +15,7 @@ class Solution:
 
         return [*letter_list, *digit_list]
 
+    # KEY
     def comp(self, a, b):
         a_index, b_index = a.index(' '), b.index(' ')
 
