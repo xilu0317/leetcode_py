@@ -1,5 +1,5 @@
 class Solution:
-    # [KEY] process previous two numbers for the current sign
+    # [KEY] process the previous number when hitting the current sign
     def calculate(self, s):
         res, num, sign, stack = 0, 0, 1, []
 
