@@ -11,7 +11,6 @@ def two_sum_cloest(a, b, target):
         elif a[i][1] + b[j][1] < target:
             i += 1
         else:
-            print(i, j)
             break
 
     dic = {x[1]: x[0] for x in b}
