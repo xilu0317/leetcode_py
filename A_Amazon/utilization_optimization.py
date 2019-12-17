@@ -1,48 +1,38 @@
-#     // a=[[1, 8], [2, 7], [3, 14]]
-#     // b=[[1, 5], [2, 10], [3, 14]]
-#     // target=20
+def two_sum_cloest(a, b, target):
+    i, j, min_ = 0, len(b) - 1, float('inf')
 
-#     a=[[1, 3], [2, 5], [3, 7], [4, 10]]
-#     b=[[1, 2], [2, 3], [3, 4], [4, 5]]
-#     target=10
+    while i < len(a) and j >= 0:
+        diff = target - a[i][1] - b[j][1]
+        min_ = abs(min(min_, diff))
 
-#     const twoSumClosest=(a, b, target)=> {
-#         let i=0, j=b.length - 1
-#         let min=Infinity
+        if a[i][1] + b[j][1] > target:
+            j -= 1
+        elif a[i][1] + b[j][1] < target:
+            i += 1
+        else:
+            print(i, j)
+            break
 
-#         // just identify the min in the first pass
-#         while (i < a.length & & j >= 0) {
-#             let diff=target - a[i][1] - b[j][1]
-#             if (diff >= 0)
-#             min=Math.min(min, diff)
+    dic = {x[1]: x[0] for x in b}
 
-#             if (a[i][1] + b[j][1] > target)
-#             j--
-#             else if (a[i][1] + b[j][1] < target)
-#             i++
-#             else
-#             break
-#         }
+    for x, y in a:
+        if target - min_ - y in dic:
+            return x, dic[target - min_ - y]
 
-#         let dict={}
-#         for (let i=0
-#              i < b.length
-#              i++) {
-#             dict[b[i][1]]=b[i][0]
-#         }
+    return -1
 
-#         let res=[]
-#         for (let i=0
-#              i < a.length
-#              i++) {
-#             let goal=target - min - a[i][1]
-#             if (dict[goal])
-#             res.push([a[i][0], dict[goal]])
-#         }
 
-#         return res
-#     }
+# testcase 1 => (3, 1)
+a = [[1, 8], [2, 7], [3, 14]]
+b = [[1, 5], [2, 10], [3, 14]]
+target = 20
 
-#     let stuff=twoSumClosest(a, b, target)
-#     console.log(stuff.toString())
-# })()
+
+# testcase 2 => (2, 4)
+# a = [[1, 3], [2, 5], [3, 7], [4, 10]]
+# b = [[1, 2], [2, 3], [3, 4], [4, 5]]
+# target = 10
+
+
+s = two_sum_cloest(a, b, target)
+print(s)
