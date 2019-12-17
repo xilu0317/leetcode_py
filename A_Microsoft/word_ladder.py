@@ -4,7 +4,7 @@ from collections import deque
 class Solution:
     def ladder_length(self, begin_word, end_word, word_list):
         word_set = set(word_list)
-        alphabet = [chr(x) for x in range(ord('a'), ord('z') + 1)]
+        alpha = [chr(x) for x in range(ord('a'), ord('z') + 1)]
 
         q = deque([(begin_word, 1)])
         while q:
@@ -13,7 +13,7 @@ class Solution:
                 return level
 
             for i in range(len(cur_word)):
-                for c in alphabet:
+                for c in alpha:
                     next_word = cur_word[:i] + c + cur_word[i + 1:]
                     if next_word in word_set:
                         word_set.remove(next_word)
