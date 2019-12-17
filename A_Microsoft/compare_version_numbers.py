@@ -2,7 +2,6 @@ class Solution:
     def compare_version(self, v1, v2):
         l1, l2 = v1.split('.'), v2.split('.')
 
-        # python lambda expression
         l1 = list(map(lambda x: int(x), l1))
         l2 = list(map(lambda x: int(x), l2))
 

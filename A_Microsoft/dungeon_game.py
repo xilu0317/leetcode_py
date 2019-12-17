@@ -1,5 +1,5 @@
 class Solution:
-    # dp[i][j] = minimal HP needed at grid (i, j)
+    # dp[i][j] = minimal health point needed at grid (i, j)
     def calculate_minimum_HP(self, dungeon):
         MAX = float('inf')
 

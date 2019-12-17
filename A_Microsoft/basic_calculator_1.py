@@ -21,15 +21,16 @@ class Solution:
                 stack.append(res)
                 stack.append(sign)
                 sign = 1
-                # resetting 'res' to perform in paren calculation
+                # resetting 'res' to perform in-paren calculation
                 res = 0
             elif c == ')':
+                # perform in-paren calculation
                 res += sign * num
                 num = 0
                 res *= stack.pop()
                 res += stack.pop()
 
-        # take care the last number
+        # handle the last number
         res += sign * num
 
         return res
