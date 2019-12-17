@@ -13,6 +13,7 @@ def two_sum_cloest(a, b, target):
         else:
             break
 
+    # reverse indexing
     dic = {x[1]: x[0] for x in b}
 
     for x, y in a:
