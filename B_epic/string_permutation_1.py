@@ -10,8 +10,7 @@ def _permute(arr, l, r, res):
     for i in range(l, r + 1):
         arr[l], arr[i] = arr[i], arr[l]
         _permute(arr, l + 1, r, res)
-        # backtrack
-        arr[l], arr[i] = arr[i], arr[l]
+        arr[l], arr[i] = arr[i], arr[l]  # backtrack
 
     return res
 
