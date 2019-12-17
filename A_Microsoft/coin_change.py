@@ -1,4 +1,5 @@
 class Solution:
+    # [BEST]
     def coin_change(self, coins, amount):
         dp = [0] + [float('inf')] * amount
 
