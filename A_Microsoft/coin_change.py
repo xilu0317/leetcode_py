@@ -11,7 +11,7 @@ class Solution:
 
 
 class Solution:
-    # greedy: this only works for real coin nominations: 1, 5, 10, 50
+    # [ISSUE] greedy: this ONLY works for nominal coins: 1, 5, 10, 50
     def coin_change(self, coins, amount):
         coins.sort()
         count, i = 0, len(coins) - 1
