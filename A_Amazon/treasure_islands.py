@@ -31,10 +31,10 @@ class Solution:
 
 
 # driver
+s = Solution()
 grid = [['O', 'O', 'O', 'O'],
         ['D', 'O', 'D', 'O'],
         ['O', 'O', 'O', 'O'],
         ['X', 'O', 'O', 'O']]
-s = Solution()
 ss = s.treasure_island(grid)
 print(ss)
