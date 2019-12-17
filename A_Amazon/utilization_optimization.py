@@ -1,3 +1,4 @@
+# [TWO-POINTER]
 def two_sum_cloest(a, b, target):
     i, j, min_ = 0, len(b) - 1, float('inf')
 
