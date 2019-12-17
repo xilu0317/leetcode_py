@@ -1,7 +1,7 @@
 class Solution1:
     # standard backtracking
     def combination_sum(self, candidates, target):
-        res = []
+        res = []  # needs to be referenced to be returned
         self.dfs(candidates, target, 0, [], res)
 
         return res
