@@ -31,7 +31,7 @@ class Solution:
                 res *= stack.pop()
                 res += stack.pop()
 
-        # handle the last number
+        # handle the last number cuz' there is no sign after the last number
         res += sign * num
 
         return res
