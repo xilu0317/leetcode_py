@@ -5,7 +5,6 @@ class Solution:
         for c in s:
             if (c == ' '):
                 continue
-
             if c.isdigit():
                 num = 10 * num + int(c)
             elif c == '+':
