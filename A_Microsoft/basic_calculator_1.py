@@ -1,4 +1,5 @@
 class Solution:
+    # [KEY] process previous two numbers for the current sign
     def calculate(self, s):
         res, num, sign, stack = 0, 0, 1, []
 
@@ -9,6 +10,7 @@ class Solution:
                 num = 10 * num + int(c)
             elif c == '+':
                 res += sign * num
+                # after using 'sign' and 'num', reset them
                 num = 0
                 sign = 1
             elif c == '-':
@@ -19,7 +21,7 @@ class Solution:
                 stack.append(res)
                 stack.append(sign)
                 sign = 1
-                # The 'res' will ensure calculation happen inside the paren locally
+                # resetting 'res' to perform in paren calculation
                 res = 0
             elif c == ')':
                 res += sign * num
@@ -27,6 +29,7 @@ class Solution:
                 res *= stack.pop()
                 res += stack.pop()
 
+        # take care the last number
         res += sign * num
 
         return res
