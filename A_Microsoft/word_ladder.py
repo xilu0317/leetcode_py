@@ -16,7 +16,7 @@ class Solution:
                 for c in alpha:
                     next_word = cur_word[:i] + c + cur_word[i + 1:]
                     if next_word in word_set:
-                        word_set.remove(next_word)
+                        word_set.remove(next_word)  # mark as visited
                         q.append((next_word, level + 1))
 
         return 0
