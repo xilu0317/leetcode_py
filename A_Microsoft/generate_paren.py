@@ -9,7 +9,6 @@ class Solution:
     def backtrack(self, res, string, open_, close, max_):
         if len(string) == max_ * 2:
             res.append(string)
-
             return
 
         if open_ < max_:
