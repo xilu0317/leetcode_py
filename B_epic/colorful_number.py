@@ -10,6 +10,7 @@ def colorful_num(num):
                     return False
                 else:
                     s.add(prd)
+
     return True
 
 
