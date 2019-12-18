@@ -1,7 +1,8 @@
 # Description: Print continuous alphabets from a sequence of arbitrary alphabets
-# For example:
+
 # Input: abcdefljdflsjflmnopflsjflasjftuvwxyz
 # Output: abcdef lmnop  tuvwxyz
+
 # Input: AbcDefljdflsjflmnopflsjflasjftuvWxYz
 # Output: abcdef lmnop tuvwxyz
 
