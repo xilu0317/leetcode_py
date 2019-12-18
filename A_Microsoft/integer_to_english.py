@@ -14,18 +14,18 @@ class Solution:
 
         while num:
             if num % 1000:
-                words = self.helper(num % 1000) + self.thousands[i] + ' ' + words
+                words = self._helper(num % 1000) + self.thousands[i] + ' ' + words
             num = num // 1000
             i += 1
 
         return words.strip()
 
-    def helper(self, num):
+    def _helper(self, num):
         if num == 0:
             return ''
         elif num < 20:
             return self.less_than_20[num] + ' '
         elif num < 100:
-            return self.tens[num // 10] + ' ' + self.helper(num % 10)
+            return self.tens[num // 10] + ' ' + self._helper(num % 10)
         else:
-            return self.less_than_20[(num // 100)] + ' Hundred ' + self.helper(num % 100)
+            return self.less_than_20[(num // 100)] + ' Hundred ' + self._helper(num % 100)
