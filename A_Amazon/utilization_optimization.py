@@ -2,18 +2,17 @@
 def two_sum_cloest(a, b, target):
     i, j, min_ = 0, len(b) - 1, float('inf')
 
+    # find min
     while i < len(a) and j >= 0:
         diff = abs(target - a[i][1] - b[j][1])
         min_ = min(min_, diff)
 
         if a[i][1] + b[j][1] > target:
             j -= 1
-        elif a[i][1] + b[j][1] < target:
-            i += 1
         else:
-            break
+            i += 1
 
-    # reverse indexing
+    # reverse dict
     dic = {x[1]: x[0] for x in b}
 
     for x, y in a:
