@@ -5,7 +5,9 @@ def two_sum_closest(nums, target):
     left, right, min_ = 0, len(nums) - 1, float('inf')
 
     while left < right:
-        min_ = min(min_, abs(target - nums[left] - nums[right]))
+        diff = abs(target - nums[left] - nums[right])
+        min_ = min(min_, diff)
+
         if nums[left] + nums[right] < target:
             left += 1
         else:
