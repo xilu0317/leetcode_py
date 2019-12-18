@@ -1,9 +1,9 @@
 # Note: there is *no* restriction that the first number should be shorter or smaller than the second number
 class Solution:
-    # KEY: find the first two substring and then check the remaining
+    # KEY: find the first two substrings and then check the remaining
     def is_additive_number(self, num):
         n = len(num)
-        # Exhaust all possibilities of the first two substring
+        # Exhaust all possibilities of the first two substrings
         # 'i' is the beginning index of the second number
         for i in range(1, n // 2 + 1):
             if num[0] == '0' and i >= 2:
