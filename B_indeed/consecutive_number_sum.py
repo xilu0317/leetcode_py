@@ -6,11 +6,11 @@ class Solution:
         while True:
             xm = n - m * (m - 1) / 2
 
-            # m(numbers of terms) can never be zero
+            # m (numbers of terms) can never be zero
             if xm <= 0:
                 break
 
-            # check if x(the initial term of the sequence is an integer)
+            # check if x (the initial term of the sequence is an integer)
             if xm % m == 0:
                 res += 1
 
