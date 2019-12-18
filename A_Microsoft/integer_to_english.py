@@ -1,10 +1,8 @@
 class Solution:
     def __init__(self):
-        self.less_than_20 = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten',
-                             'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen']
+        self.less_than_20 = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve', 'Thirteen', 'Fourteen', 'Fifteen', 'Sixteen', 'Seventeen', 'Eighteen', 'Nineteen']
 
-        self.tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty',
-                     'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety']
+        self.tens = ['', 'Ten', 'Twenty', 'Thirty', 'Forty', 'Fifty', 'Sixty', 'Seventy', 'Eighty', 'Ninety']
 
         self.thousands = ['', 'Thousand', 'Million', 'Billion']
 
@@ -16,8 +14,7 @@ class Solution:
 
         while num:
             if num % 1000:
-                words = self.helper(num % 1000) + \
-                    self.thousands[i] + ' ' + words
+                words = self.helper(num % 1000) + self.thousands[i] + ' ' + words
             num = num // 1000
             i += 1
 
