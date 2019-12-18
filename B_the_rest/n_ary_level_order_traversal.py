@@ -7,7 +7,7 @@ class Solution:
             return None
 
         q, res = deque([root]), []
-        while len(q):
+        while q:
             len_, level = len(q), []
 
             for x in range(len_):

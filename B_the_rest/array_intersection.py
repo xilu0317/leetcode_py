@@ -3,7 +3,7 @@ class Solution:
         return set(nums1).intersection(nums2)
 
 
-class Solution:
+class Solution2:
     def intersection(self, nums1, nums2):
         s = set(nums1)
 
