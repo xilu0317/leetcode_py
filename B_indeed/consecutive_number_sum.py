@@ -1,6 +1,6 @@
 # KEY: derive the general term formula for the algebric sequence
 class Solution:
-    def consecutiveNumbersSum(self, n):
+    def consecutive_numbers_sum(self, n):
         res, m = 0, 1
 
         while True:
