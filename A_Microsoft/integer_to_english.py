@@ -6,7 +6,7 @@ class Solution:
 
         self.thousands = ['', 'Thousand', 'Million', 'Billion']
 
-    def numberToWords(self, num):
+    def number_to_words(self, num):
         if num == 0:
             return 'Zero'
 
