@@ -1,5 +1,5 @@
 # [TWO-POINTER]
-def two_sum_cloest(a, b, target):
+def two_sum_closest(a, b, target):
     i, j, min_ = 0, len(b) - 1, float('inf')
 
     # find min
@@ -34,5 +34,5 @@ b = [[1, 2], [2, 3], [3, 4], [4, 5]]
 target = 10
 
 
-s = two_sum_cloest(a, b, target)
+s = two_sum_closest(a, b, target)
 print(s)
