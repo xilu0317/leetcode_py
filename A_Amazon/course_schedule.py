@@ -1,8 +1,8 @@
 class Solution:
-    def can_finish(self, numCourses, prerequisites):
+    def can_finish(self, num_courses, prerequisites):
         # list comprehension
-        graph = [[] for _ in range(numCourses)]
-        visited = [0 for _ in range(numCourses)]
+        graph = [[] for _ in range(num_courses)]
+        visited = [0 for _ in range(num_courses)]
 
         # create graph - ajacency list
         for pair in prerequisites:
@@ -10,7 +10,7 @@ class Solution:
             graph[x].append(y)
 
         # run dfs starting from each node
-        for i in range(numCourses):
+        for i in range(num_courses):
             if not self.dfs(graph, visited, i):
                 return False
 
