@@ -16,7 +16,7 @@ class Solution:
                 res.append(pre)
                 pre = x
 
-        # need to add the last
+        # append the last interval
         res.append(pre)
 
         return res
