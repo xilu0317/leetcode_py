@@ -10,6 +10,7 @@ class Solution:
 
         return ''.join(output)
 
+    # KEY
     def comp(self, a, b):
         if str(a) + str(b) > str(b) + str(a):
             return -1
