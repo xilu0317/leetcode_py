@@ -15,7 +15,7 @@ class Solution:
                 res.append(pre)
                 pre = x
 
-        # be careful about the last 'pre'
+        # need to add the last
         res.append(pre)
 
         return res
