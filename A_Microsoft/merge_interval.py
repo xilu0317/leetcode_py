@@ -9,6 +9,7 @@ class Solution:
         res, pre = [], intervals[0]
 
         for x in intervals[1:]:
+            # previous(pre) end is great than or touching the current(x) start
             if pre[1] >= x[0]:
                 pre[1] = max(pre[1], x[1])
             else:
