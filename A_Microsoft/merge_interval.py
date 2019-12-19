@@ -3,6 +3,7 @@ class Solution:
         if not intervals:
             return None
 
+        # KEY sorted by the starting indices
         intervals = sorted(intervals, key=lambda x: x[0])
 
         res, pre = [], intervals[0]
