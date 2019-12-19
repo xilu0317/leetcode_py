@@ -22,4 +22,4 @@ class Solution:
         for x in t:
             dic[x] = dic.get(x) - 1 if dic.get(x) else None
 
-        return all(value == 0 for value in dic.values())
+        return all(x == 0 for x in dic.values())
