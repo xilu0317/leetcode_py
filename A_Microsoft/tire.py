@@ -32,5 +32,5 @@ class Trie:
 
         return node and node.is_last
 
-    def startsWith(self, prefix):
+    def starts_with(self, prefix):
         return self._traverse(prefix)
