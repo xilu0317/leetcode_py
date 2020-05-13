@@ -12,9 +12,11 @@ class Solution:
         return count
 
     def dfs(self, grid, i, j):
+        # out of bound
         if not (0 <= i < len(grid)) or not (0 <= j < len(grid[0])) or grid[i][j] == '0':
             return
 
+        # mark visited
         grid[i][j] = '0'
 
         self.dfs(grid, i + 1, j)
