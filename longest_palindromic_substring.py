@@ -6,6 +6,7 @@ class Solution:
                 if len(l) > len(res):
                     res = l
         return res
+        
     def expand(self, s: str, l: int, r: int) -> str:
         while l >= 0 and r < len(s) and s[l] == s[r]:
             l -= 1
