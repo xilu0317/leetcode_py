@@ -1,0 +1,20 @@
+cur -> current
+prev -> previous
+res -> result
+dict -> dictionary / hashmap
+arr -> array / list
+tmp -> temporary
+chars -> characters
+pos -> position
+maxVal -> maximum value
+minVal -> minimum value
+q -> queue
+head -> head of the list
+tail -> tail of the list
+root -> root of the tree
+
+start, end -> range boundaries
+
+i, j, k -> iteration variables
+l -> left child
+r -> right child
