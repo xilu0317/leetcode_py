@@ -16,13 +16,14 @@ class Solution:
         
         return res
 
+## EXAMPLES
 
-# unpacking examples
+# unpacking
 # Basic unpacking with two values
 numbers = [5, 10]
 start, end = numbers    # start = 5, end = 10
  
-# last val example
+# last value in a list
 arr = [1, 2, 3, 4, 5]
 last = arr[-1]      # 5  (last element)
 second_last = arr[-2]  # 4  (second to last)
