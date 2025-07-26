@@ -14,15 +14,15 @@ class Solution:
         dict[node] = Node(node.val)
 
         while queue:
-            curr = queue.popleft()
+            cur = queue.popleft()
 
-            for nb in curr.neighbors:
+            for nb in cur.neighbors:
                 #  Check if the nb has already been visited
                 if nb not in dict:
                     dict[nb] = Node(nb.val)
                     # this is needed for the traversal to work
                     queue.append(nb)
                 
-                dict[curr].neighbors.append(dict[nb])
+                dict[cur].neighbors.append(dict[nb])
 
         return dict[node]
