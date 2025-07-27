@@ -1,0 +1,63 @@
+1. What is the Virtual DOM and how does React use it?
+Concept: Optimization
+React uses a Virtual DOM (an in-memory representation of the real DOM) to minimize costly DOM manipulations. When the state changes, React creates a new virtual DOM tree, compares it (diffing) with the previous one, and applies the minimal set of changes to the real DOM (reconciliation).
+
+2. What are keys in React and why are they important?
+Concept: Lists and Rendering
+Keys help React identify which items have changed, been added, or removed. They must be unique among siblings to ensure optimal list rendering performance. Using index as a key is discouraged unless the list is static.
+
+3. What are controlled and uncontrolled components in React?
+Concept: Forms
+Controlled components use React state to manage form inputs (value and onChange props).
+Uncontrolled components access form values via refs (defaultValue and ref.current.value), which is closer to traditional DOM handling.
+
+4. What are React hooks? Name a few commonly used ones.
+Concept: Functional Components
+Hooks let you use state and lifecycle features in function components. Common ones include:
+useState: Manage state
+useEffect: Side effects (e.g., fetching data)
+useContext: Access context values
+useRef: Persist values without causing re-renders
+useMemo / useCallback: Performance optimizations
+
+5. What is the difference between useEffect and useLayoutEffect?
+Concept: Lifecycle
+useEffect runs after the browser paints the screen.
+useLayoutEffect runs synchronously after all DOM mutations but before painting. Use it when DOM measurements are needed before display.
+
+6. What are higher-order components (HOC)?
+Concept: Composition
+A higher-order component is a function that takes a component and returns a new component. It's used for code reuse (e.g., authentication, logging, etc.).
+Example:
+
+jsx
+Copy
+Edit
+const withLogger = (WrappedComponent) => (props) => {
+  console.log('Rendering', WrappedComponent.name);
+  return <WrappedComponent {...props} />;
+};
+7. What is context and when should you use it?
+Concept: State Sharing
+React.createContext() provides a way to pass data (like theme, auth, locale) through the component tree without passing props manually at every level. Use it for global or shared state.
+
+8. How does React handle performance optimization?
+Concept: Optimization
+Techniques include:
+Memoization (React.memo, useMemo, useCallback)
+Code splitting (via React.lazy and Suspense)
+Avoid unnecessary re-renders (key props, shouldComponentUpdate)
+
+Efficient list rendering (key, pagination)
+
+9. What is reconciliation in React?
+Concept: Internals
+Reconciliation is the process React uses to update the DOM efficiently. When a component’s state or props change, React compares the new virtual DOM with the previous one and updates only the changed parts.
+
+10. What is the difference between props and state in React?
+Concept: Data Flow
+
+Props: Passed from parent to child; read-only.
+State: Local to a component; managed with useState or this.setState.
+
+Let me know if you want code examples, beginner versions, or senior-level deep dives for any of these.
