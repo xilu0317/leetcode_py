@@ -28,3 +28,26 @@ def bfs_n_ary_tree(root: Node) -> List[List[int]]:
         result.append(level)
 
     return result
+
+# 
+from collections import deque
+def bfs_nary_tree(root: Node) -> List[List[int]]:
+    if not root:
+        return []
+
+    res = []
+    q = deque([root])
+
+    while q:
+        level_size = len(q)
+        level = []
+        for _ in range(level_size):
+            cur = q.popleft()
+            level.append(cur.val)
+            for child in cur.children:
+                q.append(child)
+                
+        res.append(level)
+
+    return res
+
